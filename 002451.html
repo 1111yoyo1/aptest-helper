@@ -1,0 +1,1679 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta content="IE=8" http-equiv="x-ua-compatible" />
+
+
+<title> Run Multiple Tests in Session 002451/Nightly
+</title>
+
+<link href="http://ftcsvn.lsi.com/atm/atm_internal.css" type="text/css" rel="stylesheet" />
+<link href="http://ftcsvn.lsi.com/atm/atm.css" type="text/css" rel="stylesheet" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="http://ftcsvn.lsi.com/atm/atm_internal_ie.css" >
+<![endif]-->
+
+
+<script src="/atm/scripts/ajax/prototype.js" type="text/javascript" language="javascript"></script>
+<script src="/atm/scripts/ajax/scriptaculous.js" type="text/javascript" language="javascript"></script><script src="http://ftcsvn.lsi.com/atm/scripts/ajax/builder.js" type="text/javascript"></script><script src="http://ftcsvn.lsi.com/atm/scripts/ajax/effects.js" type="text/javascript"></script><script src="http://ftcsvn.lsi.com/atm/scripts/ajax/dragdrop.js" type="text/javascript"></script><script src="http://ftcsvn.lsi.com/atm/scripts/ajax/controls.js" type="text/javascript"></script><script src="http://ftcsvn.lsi.com/atm/scripts/ajax/slider.js" type="text/javascript"></script><script src="http://ftcsvn.lsi.com/atm/scripts/ajax/sound.js" type="text/javascript"></script>
+<script src="/atm/scripts/ajax/window.js" type="text/javascript" language="javascript"></script>
+<link href="/atm/scripts/ajax/themes/default.css" type="text/css" rel="stylesheet" />
+
+<script src="/atm/scripts/atm.js" language="Javascript1.1" type="text/javascript"></script>
+<script language="Javascript1.1" type="text/javascript">
+&lt;!--
+function childWindow(page, tc, dir, winX, winY, winName, menu, toolbar ) {
+	target = "editWindow";
+	if (winName != null &amp;&amp; winName != "") {
+		target = winName;
+	}
+	if (menu == "") {
+		menu = "no";
+	}
+	if (toolbar== "") {
+		toolbar= "no";
+	}
+	Xoff = top.screenX + 50;
+	Yoff = top.screenY + 50;
+    if (winX == 0) {
+        winX = window.top.document.viewport.getWidth() ;
+    }
+    if (winY == 0) {
+        winY = window.top.document.viewport.getHeight() ;
+    }
+	var widthStr = "width=" + winX + ",";
+	var heightStr = "height=" + winY + ",";
+	if (winX == 0 || winX &gt; screen.availWidth) {
+//		winX = window.outerWidth;
+//		if ( window.outerWidth ) {
+//			widthStr = "width="+window.outerWidth+",";
+//		} else {
+			widthStr = "";
+//		}
+	}
+	if (winY == 0 || winY &gt; screen.availHeight) {
+//		winY = window.outerHeight;
+//		if ( window.outerHeight ) {
+//			heightStr = "height="+window.outerHeight+",";
+//		} else {
+			heightStr = "";
+//		}
+	}
+
+	ATM_CHILD = window.open(page+".mpl?tc="+tc+"&amp;suite=FCD&amp;dir="+dir, target, "screenX="+Xoff+",screenY="+Yoff+","+widthStr+heightStr+"location=no,menubar="+menu+",status=no,toolbar="+toolbar+",scrollbars=yes,resizable=yes");
+    return ATM_CHILD ;
+}
+
+var ATM_CHILD = null ;
+var IMAGE_TOP = 'http://ftcsvn.lsi.com/atm/images';
+var SCRIPT_TOP = 'http://ftcsvn.lsi.com/atm/scripts';
+var WEB_TOP = '/atm';
+var SUITE = 'FCD';
+var ATM_STATE = 'idle';   // will be overridden as needed
+var ATM_CONTENT = 'mainContent' ; // id of DIV with content
+var ATM_HEADER = 'headerContainer'; // id of the page header
+var ATM_HELP = 'helpArea';
+var ATM_LOAD_THRESHOLD = 2000;  // 2000 milliseconds to load and we will
+                                // need progress messages
+
+function newWindow(url, winX, winY, winName, menu, toolbar, location, wantReturn) {
+    if ( url == null ) {
+        url = "";
+    }
+	target = "newnWindow";
+	if (winName != "") {
+		target = winName;
+	}
+	if (location == "") {
+		location = "no";
+	}
+	if (menu == "") {
+		menu = "no";
+	}
+	if (toolbar== "") {
+		toolbar= "no";
+	}
+	Xoff = top.screenX + 50;
+	Yoff = top.screenY + 50;
+    if (winX == 0) {
+        winX = window.top.document.viewport.getWidth() ;
+    }
+    if (winY == 0) {
+        winY = window.top.document.viewport.getHeight() ;
+    }
+	var widthStr = "width=" + winX + ",";
+	var heightStr = "height=" + winY + ",";
+	if (winX == 0 || winX &gt; screen.availWidth) {
+		widthStr = "";
+	}
+	if (winY == 0 || winY &gt; screen.availHeight) {
+		heightStr = "";
+	}
+
+    ATM_CHILD = window.open(url, target, "screenX="+Xoff+",screenY="+Yoff+","+widthStr+heightStr+"location="+location+",menubar="+menu+",status=no,toolbar="+toolbar+",scrollbars=yes,resizable=yes");
+    if ( wantReturn ) {
+        return ATM_CHILD;
+    } else {
+        return;
+    }
+}
+// --&gt;
+</script>
+
+
+<link title="win2k-cold-1" href="http://ftcsvn.lsi.com/atm/scripts/jscalendar/calendar-win2k-cold-1.css" media="all" type="text/css" rel="stylesheet" />
+<!-- main calendar program -->
+<script src="http://ftcsvn.lsi.com/atm/scripts/jscalendar/calendar.js" type="text/javascript"></script>
+<!-- language for the calendar -->
+<script src="http://ftcsvn.lsi.com/atm/scripts/jscalendar/lang/calendar-en.js" type="text/javascript"></script>
+<script src="http://ftcsvn.lsi.com/atm/scripts/jscalendar/calendar-setup.js" type="text/javascript"></script>
+
+
+<script language="javascript1.1" type="text/javascript">
+&lt;!--
+function uploadFile(tc, dir) {
+	childWindow("uploadFile", tc, dir, 550, 350);
+}
+
+function changed(test, elem) {
+	var name = "document.theForm.changed_" + test;
+	if ( elem &amp;&amp; elem.name == 'note_'+test ) {
+		name = "document.theForm.noteChanged_" + test;
+	}
+
+	var ref = eval(name);
+
+	ref.value = "1";
+	return false;
+}
+
+function noteChanged(test) {
+	var name = "document.theForm.noteChanged_" + test;
+
+	var ref = eval(name);
+
+	ref.value = "1";
+	return false;
+}
+
+ATM_STATE = 'run'; // we are running
+ATM_RUN_TYPE = 'multi'; // we are running
+
+function resetAllRundata () {
+    var check = window.confirm('Are you sure you want to reset all your run data to the defaults?');
+    if (!check) return ;
+    for ( var t = FIRST_TEST; t &lt;= LAST_TEST; t++ ) {
+        resetRundata( t );
+    }
+}
+
+function showHide (button, item) {
+    var ref = document.getElementById(item) ;
+    var b = document.getElementById(button) ;
+    if (ref) {
+        if (ref.style.display == "none") {
+            ref.style.display = "";
+            b.value="Hide Session Information";
+            document.cookie = "ATMSessionInfo=1;path=" + WEB_TOP;
+        } else {
+            ref.style.display = "none" ;
+            b.value="Show Session Information";
+            document.cookie = "ATMSessionInfo=0;path=" + WEB_TOP;
+        }
+    }
+    return ;
+}
+
+function initSessionInfo() {
+    var cookie = document.cookie;
+    if (cookie.indexOf("ATMSessionInfo=1") &gt; -1) {
+        showHide("hideButton","sessionInfo") ;
+    }
+    return;
+}
+
+
+addEvent(window, 'load', initSessionInfo ) ;
+
+function initStepByStep() {
+    // go through form fields in order
+    // disable any fields that have no result yet AND are
+    // more than one away from a field that DOES have a result
+    var fels = Form.getElements('theForm') ;
+    if (fels.length == null) return ;
+    var state = 0 ;
+    var testNum = null ;
+    var resPat = new RegExp( "(results-)([0-9]+)_([0-9]+)$" ) ;
+
+    for (var idx = 0; idx &lt; fels.length; idx++) {
+        var eref = fels[idx] ;
+        if (eref.name.indexOf('results-') == 0) {
+            // okay - this is a result item
+            var match = eref.name.match( resPat ) ;
+            // if we are on a different test than last time - reset
+            if (match[3] != testNum) {
+                state = 0 ;
+                testNum = match[3];
+            }
+            if (state == 1) {
+                eref.disabled = true ;
+            } else if (eref.selectedIndex == 0) {
+                state = 1 ;
+            }
+        }
+    }
+    return ;
+}
+
+function clearResults() {
+    var fels = Form.getElements('theForm') ;
+    if (fels.length == null) return ;
+    var state = 0 ;
+    for (var idx = 0; idx &lt; fels.length; idx++) {
+        var eref = fels[idx] ;
+        if (eref.name.indexOf('results-') == 0) {
+            eref.selectedIndex = 0 ;
+        }
+    }
+    initStepByStep() ;
+    updateResult() ;
+    return ;
+}
+
+function updateResult(item, row) {
+    // ensure the next input item is NOT disabled
+    if (item != null) {
+        var resRef = null ;
+        var theResult = null ;
+        var theResultIdx = null ;
+        var theResultName = null ;
+        var thisResult = null ;
+        var eList = Form.getElements('theForm') ; 
+        var allTested = 1 ;
+        var someTested = 0 ;
+
+        var resPat = new RegExp( "(results-)([0-9]+)_([0-9]+)$" ) ;
+
+        // find the test number that we are updating
+        var match = item.name.match( resPat ) ;
+        var testNum = match[3] ;
+
+        // make note that this test has changed
+        changed(testNum, item);
+
+        var next = 'results-' + (row + 1) + '_' + testNum ;
+
+        var nextRef = null ;
+
+        for (var idx = 0; idx &lt; eList.length; idx++) {
+            if (eList[idx].name.indexOf('results-') == 0 ) {
+                match = eList[idx].name.match( resPat ) ;
+                if (match[3] == testNum) {
+                    if (eList[idx].selectedIndex == 0) {
+                        allTested = 0 ;
+                    } else {
+                        someTested = 1 ;
+                        thisResult = eList[idx].value ;
+                        if (theResult == null || ATM_RESULTS[thisResult] &gt; theResult) {
+                            theResult = ATM_RESULTS[thisResult] ;
+                            theResultIdx = eList[idx].selectedIndex ;
+                            theResultName = thisResult ;
+                        }
+                    }
+                }
+            }
+            if (eList[idx].name == next) {
+                eList[idx].disabled = false;
+                nextRef = eList[idx] ;
+            }
+            if (eList[idx].name == 'results_'+testNum) {
+                resRef = eList[idx] ;
+            }
+        }
+        if (theResult != null &amp;&amp; resRef) {
+            if (resRef.type == 'radio') {
+                var resultName = theResultName ;
+                if (!allTested) {
+                    resultName = 'incomplete';
+                }
+                for (var idx = 0; idx &lt; eList.length; idx++) {
+                    if (eList[idx].name == 'results_'+testNum &amp;&amp; eList[idx].value == resultName) {
+                        eList[idx].checked = true;
+                        resRef = eList[idx] ;
+                    }
+                }
+            } else {
+                // result is a select list
+                if (allTested) {
+                    // if all rows have a result, pick the aggregate
+                    resRef.selectedIndex = theResultIdx ;
+                } else {
+                    // set the result to incomplete
+                    if (ATM_RESULTS['incomplete'] != null) {
+                        resRef.selectedIndex = ATM_RESULTS['incomplete'] + 1 ;
+                    }
+                }
+            } 
+            try {
+                resRef.onchange();
+            } catch ( e ) {
+            }
+        }
+        if (nextRef) {
+            nextRef.focus() ;
+        }
+    }
+    return ;
+}
+
+
+addEvent(window, 'load', initStepByStep ) ;
+// --&gt;
+</script>
+
+<script language="Javascript1.1" type="text/javascript">
+&lt;!--
+addEvent(window, "load", enableForms);
+addEvent(window, "load", fixForms);
+// --&gt;
+</script>
+<!--[if lte IE 6]>
+<script type="text/javascript" src="http://ftcsvn.lsi.com/atm/scripts/supersleight.js"></script>
+<![endif]-->
+</head>
+
+
+<body onload="restrictAll()">
+<div id="atmBody">
+
+<div id="headerContainer">
+<div id="pageHeader">
+<div id="pageTitle"> Run Multiple Tests in Session 002451/Nightly
+</div>
+
+<div id="navcont">
+
+<a href="http://www.aptest.com/atm2" target="_blank" style="padding: 0; border-right: none" class="nohover"><img width="107" height="47" title="Version 2.27.02 Copyright © 2000-2014 Applied Testing and Technology, Inc. All rights reserved." src="http://ftcsvn.lsi.com/atm/images/atmlogo-smaller.png" alt="Logo" id="atmLogo" /></a>
+
+</div> <!-- end navcont -->
+</div> <!-- end pageHeader -->
+
+<div id="suiteBar">
+
+<div id="atmUserData">
+User: <span id="ATM_username">Yoyo Xu</span>
+<a href="/atm/accounts/logout.mpl" target="_top" style="display:none" id="logoutLink">logout</a>
+</div> <!-- end atmUserData -->
+<div id="atmSuiteData">
+<span class="suiteLabel" title="Test Suite Name">FCD</span>
+<span title="The user can edit Requirements and Test Cases, run tests, and create Test Sets and Sessions" class="suiteRole smaller">[Manage Execution and Edit]</span>
+</div> <!-- end atmSuiteData -->
+
+</div> <!-- end suiteBar or breadCrumb or userBanner -->
+</div> <!-- end headerContainer -->
+<div id="mainContent">
+
+
+
+
+
+
+
+
+<script language="javascript1.1" type="text/javascript">
+&lt;!--
+
+ATM_RESULTS = {"pass":1,"incomplete":6,"fail":5,"untested":0,"blocked":3,"unsupported":2,"unresolved":4} ;
+ATM_INCOMPLETE_RESULT = "untested";
+
+// add data to the note field for testid
+function updateNote(tid, data) {	
+	var cnote = "parent.document.theForm.note_" + tid + ".value += ' ' + '" + data + "' + ' ' ; " ;
+	var tnote = "parent.document.theForm.tc_" + tid + "_note.value += ' ' + '" + data + "' + ' ' ; " ;
+	eval(cnote) ;
+	eval(tnote) ;
+	var name = "parent.document.theForm.noteChanged_" + tid;
+	var ref = eval(name) ;
+	ref.value = 1;
+}
+
+function callBTS(tid) {
+	// ensure there is a URI
+	var URI = 'http://jira.sandforce.com';
+
+	var baseURI = 'http://ftcsvn.lsi.com/atm/browse/viewTestCase.mpl?suite=FCD';
+	var baseURI2 = 'http://ftcsvn.lsi.com/atm/run/sessionSummary.mpl?suite=FCD&amp;sessNum=002451/Nightly&amp;set=5.6.0_SH/Nightly';
+	var baseURI3 = 'http://ftcsvn.lsi.com/atm/run/runTestCase.mpl?suite=FCD&amp;sessNum=002451/Nightly&amp;set=5.6.0_SH/Nightly&amp;tid=-1';
+
+    var tNum = tid.substring( 3 );
+    var form = document.theForm;
+	var TEST = form[ tid + "_test" ].value;
+	var UUID = form[ tid + "_uuid" ].value;
+	var NOTES = "";
+    if ( form[ "note_" + tNum ] ) {
+        NOTES = escape( form[ "note_" + tNum ].value );
+    }
+	var RESULT;
+    var result = form[ "results_" + tNum ];
+    if ( result.value == null ) {
+        // radio buttons
+        for ( var o = 0; o &lt; result.length; o++ ) {
+            if ( result[ o ].checked ) RESULT = result[ o ].value;
+        }
+    } else {
+        // dropdown menu
+        RESULT = result.value;
+    }
+
+    var execField = /%RESULT_([a-z0-9\.\-\_]+)/ig;
+    var tmpURI = URI;
+    var match = execField.exec( URI );
+    while ( match ) {
+        if ( match ) {
+            var macro = match[0];
+            var fname = match[1];
+            var elem = form[ 'RUNDATA_' + fname  + '_' + tNum ];
+            if ( elem ) {
+                var value = "";
+                if ( elem.type == 'hidden' ) {
+                    value = escape( elem.value );
+                } else if ( elem.length &amp;&amp; elem[0].type &amp;&amp; ( elem[0].type == 'checkbox' || elem[0].type == 'radio' ) ) {
+                    var vals = [];
+                    for ( var a = 0; a &lt; elem.length; a++ ) {
+                        if ( elem[ a ].checked ) vals.push( escape( elem[ a ].value ) );
+                    }
+                    value = vals.join( ',' );
+                } else {
+                    value = $F( elem );
+                    if ( typeof( value ) == 'object' ) {
+                        for ( var v = 0; v &lt; value.length; v++ ) {
+                            value[ v ] = escape( value[ v ] );
+                        }
+                        value = value.join( ',' );
+                    } else {
+                        value = escape( value );
+                    }
+                }
+                tmpURI = tmpURI.replace( macro, value );
+            }
+        }
+        match = execField.exec( URI );
+    }
+    URI = tmpURI;
+	TEST = TEST.replace(/\.dir\//g, '/');
+	TEST = TEST.replace(/\.bts$/g, '');
+	TEST = escape(TEST);
+
+	var USER = escape('yoxu');
+	var SESSION = escape('002451/Nightly');
+	var SET = escape('5.6.0_SH/Nightly');
+	var RESULT = escape( RESULT );
+
+	URI = URI.replace(/%ID/g, TEST);
+	URI = URI.replace(/%UUID/g, UUID);
+	URI = URI.replace(/%NOTES/g, NOTES);
+	URI = URI.replace(/%RESULT/g, RESULT);
+	URI = URI.replace(/%SUITE/g, escape('FCD'));
+	URI = URI.replace(/%USER/g, escape('yoxu'));
+	URI = URI.replace(/%SESSION/g, escape('002451/Nightly'));
+	URI = URI.replace(/%SET/g, escape('5.6.0_SH/Nightly'));
+	URI = URI.replace(/%URIRUN/g, escape(baseURI3+'&amp;atm_id=' + UUID));
+	URI = URI.replace(/%URISUM/g, escape(baseURI2));
+	URI = URI.replace(/%URI/g, escape(baseURI+'&amp;atm_id='+UUID));
+
+	window.open(URI, "_blank", "scrollbars=yes,toolbar=yes,menubar=yes,status=yes,location=yes,resizable=yes");
+}
+
+function setExecdataValue ( field, value ) {
+    var form = document.theForm;
+    var elem = form[ 'RUNDATA_' + field ];
+    if ( elem == null ) return;
+    if ( elem.type == 'hidden' ) {
+        elem.value = value;
+        try {
+            elem.displayDate();
+        } catch (e ) {
+        }
+        return;
+    } else if ( elem.length  ) {
+        if ( typeof( value ) != 'object' ) value = value.split( /,\s*/ );
+        var list = elem;
+        var property = 'checked';
+        if ( elem.options ) {
+            list = elem.options;
+            property = 'selected';
+        }
+        for ( var a = 0; a &lt; elem.length; a++ ) {
+            var check = false;
+            for ( var v = 0; v &lt; value.length; v++ ) {
+                if ( elem[ a ].value == value[ v ] ) check = true;
+            }
+            elem[ a ][ property ] = check;
+        }
+    } else {
+        elem.value = value;
+    }
+    try {
+        elem.onchange();
+    } catch ( e ) {
+    }
+}
+
+// --&gt;
+</script>
+
+<script type="text/javascript" src="http://ftcsvn.lsi.com/atm/scripts/dependsOn.js" language="JavaScript"></script>
+<script type="text/javascript" src="http://ftcsvn.lsi.com/atm/scripts/resetRundata.js" language="JavaScript"></script>
+
+<input type="button" onclick="showHide('hideButton','sessionInfo');" value="Show Session Information" id="hideButton" class="bbutton" />
+<div style="background: #fff4f7; display: none" id="sessionInfo">
+
+
+
+<p>
+</p><table width="98%" align="center" class="atm_dataTable sortable" id="sesslist">
+<tbody><tr class="header">
+
+<th rowspan="1" class="left">#</th>
+	<th rowspan="1">Name</th>
+    <th rowspan="1">Test Set</th>
+    <th rowspan="1">Assigned To</th>
+    <th rowspan="1">Tests</th>
+    <th rowspan="1">Not Run</th>
+    <th rowspan="1">Progress</th>
+<th rowspan="1"># </th></tr><tr><td> 002451/Nightly</td><td nowrap="nowrap" rowspan="1">MP560_Nightly_F.1.4_Feature_NoneLoop</td><td rowspan="1">5.6.0_SH/ Nightly</td><td rowspan="1">Yoyo Xu</td><td align="left" rowspan="1">20</td><td align="left" rowspan="1">2</td>
+<td sortval="90">
+    <div class="np">        <div class="np0">
+            <div style="width: 90%; z-index: 1; height: 100%;" class="progressBar9"></div>
+        </div>
+        <span class="np1">90%</span>
+    </div>
+</td>
+<td sortval="0">0</td></tr></tbody></table>
+<script src="../scripts/wz_tooltip.js" type="text/javascript" language="JavaScript"></script>
+
+<script type="text/javascript">
+&lt;!--
+
+function repaintSesslistTable () {
+    var t = document.getElementById( 'sesslist' );
+    var newRows = new Array() ;
+    for (var i = 0; i &lt; t.rows.length; i++) {
+        newRows.push(t.rows[i]) ;
+    }
+    for (var i = 0; i &lt; newRows.length; i++) {
+        t.tBodies[0].appendChild(newRows[i]) ;
+    }
+}
+
+addEvent(window, 'resize', repaintSesslistTable ) ;
+addEvent( window, "load", repaintSesslistTable );
+
+//--&gt;
+</script>
+
+
+
+</div>
+
+<script type="text/javascript" language="JavaScript">
+&lt;!--
+addDeps( {
+
+} );
+var runDataDefs = {"timestaff":{"value":"2","type":"atm_minutes8"},"assignedto":{"value":"","type":"atm_alist"},"atm_step_notes":{"value":"","type":"atm_rownote"},"notetext":{"value":"","type":"atm_notes"},"atm_step_results":{"value":"","type":"atm_result"},"atm_prid":{"value":"","type":"text"},"atm_rundatahistory":{"value":"","type":"atm_history"},"user":{"value":"","type":"atm_alist"},"id":{"value":"","type":"text"},"testplanref":{"value":"1","type":"menu"},"exectimestaff":{"value":"2","type":"atm_minutes8"},"when":{"value":"","type":"time"},"atm_prlink":{"value":"","type":"textarea"},"resultsdropdown":{"value":"","type":"atm_result"},"note":{"value":"","type":"atm_notes"},"atm_stafftimedelta":{"value":"2","type":"atm_minutes8delta"},"notes":{"value":"","type":"atm_notes"},"atm_id":{"value":"","type":"UUID"},"atm_sv":{"value":"","type":"sessionvars"},"results":{"value":"","type":"atm_result"}};NUM_TESTS = 20;
+FIRST_TEST = 0;
+LAST_TEST = 19;
+
+//--&gt;
+</script>
+<form onsubmit="return checkMandatory(document.forms.theForm);" name="theForm" id="theForm" method="post" action="runWholeSession.mpl">
+
+<input type="hidden" value="FCD" name="suite" />
+<input type="hidden" value="002451/Nightly" name="sessNum" /><input type="hidden" value="0" name="page" /><input type="hidden" value="SsdtTests.dir/Smart.dir/WorkLoadLog.dir/Generic.bts" name="atm_testID_0" /><input type="hidden" value="0" name="changed_0" /><input type="hidden" value="0" name="noteChanged_0" /><input type="hidden" value="SsdtTests.dir/ClientSafePwrCycle.dir/Generic.bts" name="atm_testID_1" /><input type="hidden" value="0" name="changed_1" /><input type="hidden" value="0" name="noteChanged_1" /><input type="hidden" value="SsdtTests.dir/SmartSelfTest.dir/Generic.bts" name="atm_testID_2" /><input type="hidden" value="0" name="changed_2" /><input type="hidden" value="0" name="noteChanged_2" /><input type="hidden" value="SsdtTests.dir/Security.dir/SecureErase.dir/Generic.bts" name="atm_testID_3" /><input type="hidden" value="0" name="changed_3" /><input type="hidden" value="0" name="noteChanged_3" /><input type="hidden" value="SsdtTests.dir/Diagnostics.dir/TestRootRedundancy.dir/TestRootRedundancy.bts" name="atm_testID_4" /><input type="hidden" value="0" name="changed_4" /><input type="hidden" value="0" name="noteChanged_4" /><input type="hidden" value="SsdtTests.dir/Diagnostics.dir/SCTDataTable.dir/Generic.bts" name="atm_testID_5" /><input type="hidden" value="0" name="changed_5" /><input type="hidden" value="0" name="noteChanged_5" /><input type="hidden" value="SsdtTests.dir/Diagnostics.dir/SCTWriteSame.dir/Generic.bts" name="atm_testID_6" /><input type="hidden" value="0" name="changed_6" /><input type="hidden" value="0" name="noteChanged_6" /><input type="hidden" value="SsdtTests.dir/Security.dir/SecureErase.dir/EnhancedSecurityErase.bts" name="atm_testID_7" /><input type="hidden" value="0" name="changed_7" /><input type="hidden" value="0" name="noteChanged_7" /><input type="hidden" value="SsdtTests.dir/PowerStates.dir/PMstateCheckAll.dir/Generic.bts" name="atm_testID_8" /><input type="hidden" value="0" name="changed_8" /><input type="hidden" value="0" name="noteChanged_8" /><input type="hidden" value="SsdtTests.dir/SetFeature.dir/Generic.bts" name="atm_testID_9" /><input type="hidden" value="0" name="changed_9" /><input type="hidden" value="0" name="noteChanged_9" /><input type="hidden" value="SsdtTests.dir/ClientUnsafePwrCycle.dir/Generic.bts" name="atm_testID_10" /><input type="hidden" value="0" name="changed_10" /><input type="hidden" value="0" name="noteChanged_10" /><input type="hidden" value="SsdtTests.dir/ErrorHandling.dir/TestEccx.bts" name="atm_testID_11" /><input type="hidden" value="0" name="changed_11" /><input type="hidden" value="0" name="noteChanged_11" /><input type="hidden" value="SsdtTests.dir/WriteSpeed.dir/Generic.bts" name="atm_testID_12" /><input type="hidden" value="0" name="changed_12" /><input type="hidden" value="0" name="noteChanged_12" /><input type="hidden" value="Drive_Master_developed_internally.dir/ReadLookAhead.dir/Generic_unAligned_Comp.bts" name="atm_testID_13" /><input type="hidden" value="0" name="changed_13" /><input type="hidden" value="0" name="noteChanged_13" /><input type="hidden" value="Drive_Master_developed_internally.dir/NCQRdWtByCmp.dir/NcqRdWtbyCmp.bts" name="atm_testID_14" /><input type="hidden" value="0" name="changed_14" /><input type="hidden" value="0" name="noteChanged_14" /><input type="hidden" value="Drive_Master_developed_internally.dir/NCQ_Recovery.dir/NCQ_Recovery.bts" name="atm_testID_15" /><input type="hidden" value="0" name="changed_15" /><input type="hidden" value="0" name="noteChanged_15" /><input type="hidden" value="Drive_Master_developed_internally.dir/Log.dir/LogAccesswithZeroCount.bts" name="atm_testID_16" /><input type="hidden" value="0" name="changed_16" /><input type="hidden" value="0" name="noteChanged_16" /><input type="hidden" value="Drive_Master_developed_internally.dir/ReadLookAhead.dir/Generic_Aligned_NoComp.bts" name="atm_testID_17" /><input type="hidden" value="0" name="changed_17" /><input type="hidden" value="0" name="noteChanged_17" /><input type="hidden" value="Drive_Master_developed_internally.dir/ReadLookAhead.dir/Generic_Aligned_Comp.bts" name="atm_testID_18" /><input type="hidden" value="0" name="changed_18" /><input type="hidden" value="0" name="noteChanged_18" /><input type="hidden" value="Drive_Master_developed_internally.dir/ReadLookAhead.dir/Generic_unAligned_noComp.bts" name="atm_testID_19" /><input type="hidden" value="0" name="changed_19" /><input type="hidden" value="0" name="noteChanged_19" />
+<p><input type="submit" value="Finish" name="Finish" class="bbutton" />
+<input type="submit" value="Save Changes" name="Save" class="bbutton" />
+<input type="button" value="Cancel" onclick="window.close();" class="bbutton" />
+<input type="button" value="Reset all run info" onclick="resetAllRundata();" class="bbutton" /></p>
+<table width="100%" class="atm_dataTable"><tbody>
+		<tr class="header">
+			<th colspan="3" class="left right tleft">
+			<span class="fieldLabel">Test Case: </span><a href="/atm/browse/viewTestCase.mpl?suite=FCD&amp;atm_id=FE34F3D4-F012-11E1-BA6A-4004C6C7364A" target="_blank" class="TYPE_tc_id">SsdtTests/ Smart/ WorkLoadLog/ Generic</a>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table class="TYPE_tc_table" style="width:98%">
+<tbody><tr class="header"><th colspan="5" class="left right">Test Process</th></tr>
+<tr class="header">
+<th class="left">#</th><th>Test Procedure</th>
+<th>Verification Procedure</th>
+<th width="1%">Result</th>
+<th class="right">Notes from each step</th>
+</tr>
+<tr>
+<td align="right"><b>1.</b></td><td><p>Run WorkLoadTest.py on a drive specified by Test Session.</p>
+</td>
+<td></td>
+<td class="center"><select onchange="updateResult(this,0)" name="results-0_0"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested</option><option value="pass">pass</option><option value="unsupported">unsupported</option><option value="blocked">blocked</option><option value="unresolved">unresolved</option><option value="fail">fail</option><option value="incomplete">incomplete</option></select></td><td><span class="rownote"><textarea size="40" multiple="multiple" onchange="changed(0,this);" wrap="soft" name="atm_step_notes-0_0"></textarea></span></td></tr>
+</tbody></table>
+ 
+			</td>
+			<td width="40%" valign="top">
+			<span class="fieldLabel">Result: </span><select onchange="changed(0,this);" name="results_0"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested - The feature was not tested</option><option value="pass">pass - The test passed</option><option value="unsupported">unsupported - Feature not supported</option><option value="blocked">blocked - Test case could not be started</option><option value="unresolved">unresolved - Result could not be determined</option><option value="fail">fail - The test failed</option><option value="incomplete">incomplete - The test has been started</option></select> <span class="control">[<a href="javascript:callBTS('tc_0');">Submit a Bug Report</a>]</span> <input type="hidden" value="FE34F3D4-F012-11E1-BA6A-4004C6C7364A" name="tc_0_uuid" /><input type="hidden" value="SsdtTests.dir/Smart.dir/WorkLoadLog.dir/Generic.bts" name="tc_0_test" /><input type="hidden" value="Previous%20results%20for%20this%20test:%0a%0aRun%20by%20Yoyo%20Xu%20on%20Mar%2005%20%20%202:05AM%20CST:%20Result:%20fail,%20Staff%20Time:%202mRun%20by%20Ying%20Yang%20on%20Mar%2005%20%20%202:02AM%20CST:%20Result:%20fail,%20Staff%20Time:%202m" name="tc_0_note" /><input type="hidden" value="fail" name="tc_0_result" /><br />
+			<span class="fieldLabel">Actual Staff Time: </span><select onchange="changed(0,this);;restrict(this);" size="1" name="RUNDATA_exectimestaff_0" class="selection">
+<option selected="selected" value="2">2</option><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="60">60</option><option value="120">120</option></select>
+<br />
+			<span class="fieldLabel">Problem Report IDs: </span><input type="text" onchange="changed(0,this);" value="" name="RUNDATA_atm_prid_0" size="38" maxlength="255" /><br />
+			<span class="fieldLabel">Problem Report Links <span class="textareaStyle">(formatted)</span>: </span><div class="indent"><div><textarea onchange="changed(0,this);" name="RUNDATA_atm_prlink_0" cols="38" rows="5"></textarea></div></div><br />
+			<span class="fieldLabel">Execution Notes: </span><div><textarea rows="10" style="width:98%" onchange="changed(0,this);" wrap="soft" name="note_0"></textarea></div>Previous results for this test:
+<div class="indent">
+<p class="noteHeader">Run by Yoyo Xu on Mar 05   2:05AM CST: Result: <font color="#f84200">fail</font>, Staff Time: 2m</p><p class="noteHeader">Run by Ying Yang on Mar 05   2:02AM CST: Result: <font color="#f84200">fail</font>, Staff Time: 2m</p></div> <span class="control">[<a href="javascript:uploadFile('SsdtTests.dir/Smart.dir/WorkLoadLog.dir/Generic.bts','&amp;tid=0&amp;sessNum=002451/Nightly&amp;atm_id=FE34F3D4-F012-11E1-BA6A-4004C6C7364A');">Upload File</a>]</span> <span class="control">[<a onclick="resetRundata('0'); return false;" href="#">Reset Run Info</a>]</span>
+			</td>
+		</tr>
+
+		<tr class="header">
+			<th colspan="3" class="left right tleft">
+			<span class="fieldLabel">Test Case: </span><a href="/atm/browse/viewTestCase.mpl?suite=FCD&amp;atm_id=AA68CB76-E68B-11E1-9BD8-C1CBC5C7364A&amp;tid=1&amp;sessNum=002451" target="_blank" class="TYPE_tc_id">SsdtTests/ ClientSafePwrCycle/ Generic</a>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table class="TYPE_tc_table" style="width:98%">
+<tbody><tr class="header"><th colspan="5" class="left right">Test Process</th></tr>
+<tr class="header">
+<th class="left">#</th><th>Test Procedure</th>
+<th>Verification Procedure</th>
+<th width="1%">Result</th>
+<th class="right">Notes from each step</th>
+</tr>
+<tr>
+<td align="right"><b>1.</b></td><td><p><span style="font-family: helvetica; font-size: x-small;">Run TestPowerCheckpoint.py for a drive specified by test session with --runtime=1080.</span></p>
+</td>
+<td><p>Script should pass without any error.</p>
+</td>
+<td class="center"><select onchange="updateResult(this,0)" name="results-0_1"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested</option><option value="pass">pass</option><option value="unsupported">unsupported</option><option value="blocked">blocked</option><option value="unresolved">unresolved</option><option value="fail">fail</option><option value="incomplete">incomplete</option></select></td><td><span class="rownote"><textarea size="40" multiple="multiple" onchange="changed(1,this);" wrap="soft" name="atm_step_notes-0_1"></textarea></span></td></tr>
+</tbody></table>
+ 
+			</td>
+			<td width="40%" valign="top">
+			<span class="fieldLabel">Result: </span><select onchange="changed(1,this);" name="results_1"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested - The feature was not tested</option><option value="pass">pass - The test passed</option><option value="unsupported">unsupported - Feature not supported</option><option value="blocked">blocked - Test case could not be started</option><option value="unresolved">unresolved - Result could not be determined</option><option value="fail">fail - The test failed</option><option value="incomplete">incomplete - The test has been started</option></select> <span class="control">[<a href="javascript:callBTS('tc_1');">Submit a Bug Report</a>]</span> <input type="hidden" value="AA68CB76-E68B-11E1-9BD8-C1CBC5C7364A" name="tc_1_uuid" /><input type="hidden" value="SsdtTests.dir/ClientSafePwrCycle.dir/Generic.bts" name="tc_1_test" /><input type="hidden" value="Previous%20results%20for%20this%20test:%0a%0aRun%20by%20Yoyo%20Xu%20on%20Mar%2005%20%20%202:05AM%20CST:%20Result:%20fail,%20Staff%20Time:%202mRun%20by%20Ying%20Yang%20on%20Mar%2005%20%20%202:02AM%20CST:%20Result:%20pass,%20Staff%20Time:%202m" name="tc_1_note" /><input type="hidden" value="fail" name="tc_1_result" /><br />
+			<span class="fieldLabel">Actual Staff Time: </span><select onchange="changed(1,this);;restrict(this);" size="1" name="RUNDATA_exectimestaff_1" class="selection">
+<option selected="selected" value="2">2</option><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="60">60</option><option value="120">120</option></select>
+<br />
+			<span class="fieldLabel">Problem Report IDs: </span><input type="text" onchange="changed(1,this);" value="" name="RUNDATA_atm_prid_1" size="38" maxlength="255" /><br />
+			<span class="fieldLabel">Problem Report Links <span class="textareaStyle">(formatted)</span>: </span><div class="indent"><div><textarea onchange="changed(1,this);" name="RUNDATA_atm_prlink_1" cols="38" rows="5"></textarea></div></div><br />
+			<span class="fieldLabel">Execution Notes: </span><div><textarea rows="10" style="width:98%" onchange="changed(1,this);" wrap="soft" name="note_1"></textarea></div>Previous results for this test:
+<div class="indent">
+<p class="noteHeader">Run by Yoyo Xu on Mar 05   2:05AM CST: Result: <font color="#f84200">fail</font>, Staff Time: 2m</p><p class="noteHeader">Run by Ying Yang on Mar 05   2:02AM CST: Result: <font color="#64bd1b">pass</font>, Staff Time: 2m</p></div> <span class="control">[<a href="javascript:uploadFile('SsdtTests.dir/ClientSafePwrCycle.dir/Generic.bts','&amp;tid=1&amp;sessNum=002451/Nightly&amp;atm_id=AA68CB76-E68B-11E1-9BD8-C1CBC5C7364A');">Upload File</a>]</span> <span class="control">[<a onclick="resetRundata('1'); return false;" href="#">Reset Run Info</a>]</span>
+			</td>
+		</tr>
+
+		<tr class="header">
+			<th colspan="3" class="left right tleft">
+			<span class="fieldLabel">Test Case: </span><a href="/atm/browse/viewTestCase.mpl?suite=FCD&amp;atm_id=D41A0852-CB08-11E1-B605-48DEC5C7364A&amp;tid=2&amp;sessNum=002451" target="_blank" class="TYPE_tc_id">SsdtTests/ SmartSelfTest/ Generic</a>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table class="TYPE_tc_table" style="width:98%">
+<tbody><tr class="header"><th colspan="5" class="left right">Test Process</th></tr>
+<tr class="header">
+<th class="left">#</th><th>Test Procedure</th>
+<th>Verification Procedure</th>
+<th width="1%">Result</th>
+<th class="right">Notes from each step</th>
+</tr>
+<tr>
+<td align="right"><b>1.</b></td><td><p>Run TestSmartSelfTest_extend.py on a drive specified by test session.</p>
+</td>
+<td><p>Script should pass without any error.</p>
+</td>
+<td class="center"><select onchange="updateResult(this,0)" name="results-0_2"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested</option><option value="pass">pass</option><option value="unsupported">unsupported</option><option value="blocked">blocked</option><option value="unresolved">unresolved</option><option value="fail">fail</option><option value="incomplete">incomplete</option></select></td><td><span class="rownote"><textarea size="40" multiple="multiple" onchange="changed(2,this);" wrap="soft" name="atm_step_notes-0_2"></textarea></span></td></tr>
+</tbody></table>
+ 
+			</td>
+			<td width="40%" valign="top">
+			<span class="fieldLabel">Result: </span><select onchange="changed(2,this);" name="results_2"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested - The feature was not tested</option><option value="pass">pass - The test passed</option><option value="unsupported">unsupported - Feature not supported</option><option value="blocked">blocked - Test case could not be started</option><option value="unresolved">unresolved - Result could not be determined</option><option value="fail">fail - The test failed</option><option value="incomplete">incomplete - The test has been started</option></select> <span class="control">[<a href="javascript:callBTS('tc_2');">Submit a Bug Report</a>]</span> <input type="hidden" value="D41A0852-CB08-11E1-B605-48DEC5C7364A" name="tc_2_uuid" /><input type="hidden" value="SsdtTests.dir/SmartSelfTest.dir/Generic.bts" name="tc_2_test" /><input type="hidden" value="Previous%20results%20for%20this%20test:%0a%0aRun%20by%20Yoyo%20Xu%20on%20Mar%2005%20%20%202:05AM%20CST:%20Result:%20fail,%20Staff%20Time:%202mRun%20by%20Ying%20Yang%20on%20Mar%2005%20%20%202:02AM%20CST:%20Result:%20fail,%20Staff%20Time:%202m" name="tc_2_note" /><input type="hidden" value="fail" name="tc_2_result" /><br />
+			<span class="fieldLabel">Actual Staff Time: </span><select onchange="changed(2,this);;restrict(this);" size="1" name="RUNDATA_exectimestaff_2" class="selection">
+<option selected="selected" value="2">2</option><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="60">60</option><option value="120">120</option></select>
+<br />
+			<span class="fieldLabel">Problem Report IDs: </span><input type="text" onchange="changed(2,this);" value="" name="RUNDATA_atm_prid_2" size="38" maxlength="255" /><br />
+			<span class="fieldLabel">Problem Report Links <span class="textareaStyle">(formatted)</span>: </span><div class="indent"><div><textarea onchange="changed(2,this);" name="RUNDATA_atm_prlink_2" cols="38" rows="5"></textarea></div></div><br />
+			<span class="fieldLabel">Execution Notes: </span><div><textarea rows="10" style="width:98%" onchange="changed(2,this);" wrap="soft" name="note_2"></textarea></div>Previous results for this test:
+<div class="indent">
+<p class="noteHeader">Run by Yoyo Xu on Mar 05   2:05AM CST: Result: <font color="#f84200">fail</font>, Staff Time: 2m</p><p class="noteHeader">Run by Ying Yang on Mar 05   2:02AM CST: Result: <font color="#f84200">fail</font>, Staff Time: 2m</p></div> <span class="control">[<a href="javascript:uploadFile('SsdtTests.dir/SmartSelfTest.dir/Generic.bts','&amp;tid=2&amp;sessNum=002451/Nightly&amp;atm_id=D41A0852-CB08-11E1-B605-48DEC5C7364A');">Upload File</a>]</span> <span class="control">[<a onclick="resetRundata('2'); return false;" href="#">Reset Run Info</a>]</span>
+			</td>
+		</tr>
+
+		<tr class="header">
+			<th colspan="3" class="left right tleft">
+			<span class="fieldLabel">Test Case: </span><a href="/atm/browse/viewTestCase.mpl?suite=FCD&amp;atm_id=87E6D656-DAD8-11E1-914B-B022C6C7364A&amp;tid=3&amp;sessNum=002451" target="_blank" class="TYPE_tc_id">SsdtTests/ Security/ SecureErase/ Generic</a>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table class="TYPE_tc_table" style="width:98%">
+<tbody><tr class="header"><th colspan="5" class="left right">Test Process</th></tr>
+<tr class="header">
+<th class="left">#</th><th>Test Procedure</th>
+<th>Verification Procedure</th>
+<th width="1%">Result</th>
+<th class="right">Notes from each step</th>
+</tr>
+<tr>
+<td align="right"><b>1.</b></td><td><p>Test TestSecurityErase.py on a drive specified by test session.</p>
+</td>
+<td><p>Script should pass without any error.</p>
+</td>
+<td class="center"><select onchange="updateResult(this,0)" name="results-0_3"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested</option><option value="pass">pass</option><option value="unsupported">unsupported</option><option value="blocked">blocked</option><option value="unresolved">unresolved</option><option value="fail">fail</option><option value="incomplete">incomplete</option></select></td><td><span class="rownote"><textarea size="40" multiple="multiple" onchange="changed(3,this);" wrap="soft" name="atm_step_notes-0_3"></textarea></span></td></tr>
+</tbody></table>
+ 
+			</td>
+			<td width="40%" valign="top">
+			<span class="fieldLabel">Result: </span><select onchange="changed(3,this);" name="results_3"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested - The feature was not tested</option><option value="pass">pass - The test passed</option><option value="unsupported">unsupported - Feature not supported</option><option value="blocked">blocked - Test case could not be started</option><option value="unresolved">unresolved - Result could not be determined</option><option value="fail">fail - The test failed</option><option value="incomplete">incomplete - The test has been started</option></select> <span class="control">[<a href="javascript:callBTS('tc_3');">Submit a Bug Report</a>]</span> <input type="hidden" value="87E6D656-DAD8-11E1-914B-B022C6C7364A" name="tc_3_uuid" /><input type="hidden" value="SsdtTests.dir/Security.dir/SecureErase.dir/Generic.bts" name="tc_3_test" /><input type="hidden" value="Previous%20results%20for%20this%20test:%0a%0aRun%20by%20Yoyo%20Xu%20on%20Mar%2005%20%20%202:05AM%20CST:%20Result:%20pass,%20Staff%20Time:%202mNotes%20from%20Ying%20Yang%20at%20Mar%2005%20%20%202:02AM%20CST:%0aRun%20by%20Ying%20Yang%20on%20Mar%2004%20%20%201:32AM%20CST:%20Result:%20pass,%20Staff%20Time:%202m" name="tc_3_note" /><input type="hidden" value="pass" name="tc_3_result" /><br />
+			<span class="fieldLabel">Actual Staff Time: </span><select onchange="changed(3,this);;restrict(this);" size="1" name="RUNDATA_exectimestaff_3" class="selection">
+<option selected="selected" value="2">2</option><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="60">60</option><option value="120">120</option></select>
+<br />
+			<span class="fieldLabel">Problem Report IDs: </span><input type="text" onchange="changed(3,this);" value="" name="RUNDATA_atm_prid_3" size="38" maxlength="255" /><br />
+			<span class="fieldLabel">Problem Report Links <span class="textareaStyle">(formatted)</span>: </span><div class="indent"><div><textarea onchange="changed(3,this);" name="RUNDATA_atm_prlink_3" cols="38" rows="5"></textarea></div></div><br />
+			<span class="fieldLabel">Execution Notes: </span><div><textarea rows="10" style="width:98%" onchange="changed(3,this);" wrap="soft" name="note_3"></textarea></div>Previous results for this test:
+<div class="indent">
+<p class="noteHeader">Run by Yoyo Xu on Mar 05   2:05AM CST: Result: <font color="#64bd1b">pass</font>, Staff Time: 2m</p><p class="noteHeader">Notes from Ying Yang at Mar 05   2:02AM CST:</p><p class="noteHeader">Run by Ying Yang on Mar 04   1:32AM CST: Result: <font color="#64bd1b">pass</font>, Staff Time: 2m</p></div> <span class="control">[<a href="javascript:uploadFile('SsdtTests.dir/Security.dir/SecureErase.dir/Generic.bts','&amp;tid=3&amp;sessNum=002451/Nightly&amp;atm_id=87E6D656-DAD8-11E1-914B-B022C6C7364A');">Upload File</a>]</span> <span class="control">[<a onclick="resetRundata('3'); return false;" href="#">Reset Run Info</a>]</span>
+			</td>
+		</tr>
+
+		<tr class="header">
+			<th colspan="3" class="left right tleft">
+			<span class="fieldLabel">Test Case: </span><a href="/atm/browse/viewTestCase.mpl?suite=FCD&amp;atm_id=4372D85E-2FEF-11E3-96E6-F924C6C7364A&amp;tid=4&amp;sessNum=002451" target="_blank" class="TYPE_tc_id">SsdtTests/ Diagnostics/ TestRootRedundancy/ TestRootRedundancy</a>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table class="TYPE_tc_table" style="width:98%">
+<tbody><tr class="header"><th colspan="5" class="left right">Test Process</th></tr>
+<tr class="header">
+<th class="left">#</th><th>Test Procedure</th>
+<th>Verification Procedure</th>
+<th width="1%">Result</th>
+<th class="right">Notes from each step</th>
+</tr>
+<tr>
+<td align="right"><b>1.</b></td><td><p>Run TestRootRedundancy.py on a drive specified by test session with --runtime=60.</p>
+</td>
+<td><p>Script should pass without any error after 18 hours.</p>
+</td>
+<td class="center"><select onchange="updateResult(this,0)" name="results-0_4"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested</option><option value="pass">pass</option><option value="unsupported">unsupported</option><option value="blocked">blocked</option><option value="unresolved">unresolved</option><option value="fail">fail</option><option value="incomplete">incomplete</option></select></td><td><span class="rownote"><textarea size="40" multiple="multiple" onchange="changed(4,this);" wrap="soft" name="atm_step_notes-0_4"></textarea></span></td></tr>
+</tbody></table>
+ 
+			</td>
+			<td width="40%" valign="top">
+			<span class="fieldLabel">Result: </span><select onchange="changed(4,this);" name="results_4"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested - The feature was not tested</option><option value="pass">pass - The test passed</option><option value="unsupported">unsupported - Feature not supported</option><option value="blocked">blocked - Test case could not be started</option><option value="unresolved">unresolved - Result could not be determined</option><option value="fail">fail - The test failed</option><option value="incomplete">incomplete - The test has been started</option></select> <span class="control">[<a href="javascript:callBTS('tc_4');">Submit a Bug Report</a>]</span> <input type="hidden" value="4372D85E-2FEF-11E3-96E6-F924C6C7364A" name="tc_4_uuid" /><input type="hidden" value="SsdtTests.dir/Diagnostics.dir/TestRootRedundancy.dir/TestRootRedundancy.bts" name="tc_4_test" /><input type="hidden" value="Previous%20results%20for%20this%20test:%0a%0aRun%20by%20Yoyo%20Xu%20on%20Mar%2005%20%20%202:05AM%20CST:%20Result:%20pass,%20Staff%20Time:%202mNotes%20from%20Ying%20Yang%20at%20Mar%2005%20%20%202:02AM%20CST:%0aRun%20by%20Ying%20Yang%20on%20Mar%2004%20%20%201:32AM%20CST:%20Result:%20pass,%20Staff%20Time:%202m" name="tc_4_note" /><input type="hidden" value="pass" name="tc_4_result" /><br />
+			<span class="fieldLabel">Actual Staff Time: </span><select onchange="changed(4,this);;restrict(this);" size="1" name="RUNDATA_exectimestaff_4" class="selection">
+<option selected="selected" value="2">2</option><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="60">60</option><option value="120">120</option></select>
+<br />
+			<span class="fieldLabel">Problem Report IDs: </span><input type="text" onchange="changed(4,this);" value="" name="RUNDATA_atm_prid_4" size="38" maxlength="255" /><br />
+			<span class="fieldLabel">Problem Report Links <span class="textareaStyle">(formatted)</span>: </span><div class="indent"><div><textarea onchange="changed(4,this);" name="RUNDATA_atm_prlink_4" cols="38" rows="5"></textarea></div></div><br />
+			<span class="fieldLabel">Execution Notes: </span><div><textarea rows="10" style="width:98%" onchange="changed(4,this);" wrap="soft" name="note_4"></textarea></div>Previous results for this test:
+<div class="indent">
+<p class="noteHeader">Run by Yoyo Xu on Mar 05   2:05AM CST: Result: <font color="#64bd1b">pass</font>, Staff Time: 2m</p><p class="noteHeader">Notes from Ying Yang at Mar 05   2:02AM CST:</p><p class="noteHeader">Run by Ying Yang on Mar 04   1:32AM CST: Result: <font color="#64bd1b">pass</font>, Staff Time: 2m</p></div> <span class="control">[<a href="javascript:uploadFile('SsdtTests.dir/Diagnostics.dir/TestRootRedundancy.dir/TestRootRedundancy.bts','&amp;tid=4&amp;sessNum=002451/Nightly&amp;atm_id=4372D85E-2FEF-11E3-96E6-F924C6C7364A');">Upload File</a>]</span> <span class="control">[<a onclick="resetRundata('4'); return false;" href="#">Reset Run Info</a>]</span>
+			</td>
+		</tr>
+
+		<tr class="header">
+			<th colspan="3" class="left right tleft">
+			<span class="fieldLabel">Test Case: </span><a href="/atm/browse/viewTestCase.mpl?suite=FCD&amp;atm_id=4A7C5116-E685-11E1-B98B-D744C6C7364A&amp;tid=5&amp;sessNum=002451" target="_blank" class="TYPE_tc_id">SsdtTests/ Diagnostics/ SCTDataTable/ Generic</a>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table class="TYPE_tc_table" style="width:98%">
+<tbody><tr class="header"><th colspan="5" class="left right">Test Process</th></tr>
+<tr class="header">
+<th class="left">#</th><th>Test Procedure</th>
+<th>Verification Procedure</th>
+<th width="1%">Result</th>
+<th class="right">Notes from each step</th>
+</tr>
+<tr>
+<td align="right"><b>1.</b></td><td><p>Please run TestSctTemperatureTable.py on drive specified.</p>
+</td>
+<td><p>Script should pass without any error.</p>
+</td>
+<td class="center"><select onchange="updateResult(this,0)" name="results-0_5"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested</option><option value="pass">pass</option><option value="unsupported">unsupported</option><option value="blocked">blocked</option><option value="unresolved">unresolved</option><option value="fail">fail</option><option value="incomplete">incomplete</option></select></td><td><span class="rownote"><textarea size="40" multiple="multiple" onchange="changed(5,this);" wrap="soft" name="atm_step_notes-0_5"></textarea></span></td></tr>
+</tbody></table>
+ 
+			</td>
+			<td width="40%" valign="top">
+			<span class="fieldLabel">Result: </span><select onchange="changed(5,this);" name="results_5"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested - The feature was not tested</option><option value="pass">pass - The test passed</option><option value="unsupported">unsupported - Feature not supported</option><option value="blocked">blocked - Test case could not be started</option><option value="unresolved">unresolved - Result could not be determined</option><option value="fail">fail - The test failed</option><option value="incomplete">incomplete - The test has been started</option></select> <span class="control">[<a href="javascript:callBTS('tc_5');">Submit a Bug Report</a>]</span> <input type="hidden" value="4A7C5116-E685-11E1-B98B-D744C6C7364A" name="tc_5_uuid" /><input type="hidden" value="SsdtTests.dir/Diagnostics.dir/SCTDataTable.dir/Generic.bts" name="tc_5_test" /><input type="hidden" value="Previous%20results%20for%20this%20test:%0a%0aRun%20by%20Yoyo%20Xu%20on%20Mar%2005%20%20%202:05AM%20CST:%20Result:%20pass,%20Staff%20Time:%202mNotes%20from%20Ying%20Yang%20at%20Mar%2005%20%20%202:02AM%20CST:%0aRun%20by%20Ying%20Yang%20on%20Mar%2004%20%20%201:32AM%20CST:%20Result:%20pass,%20Staff%20Time:%202m" name="tc_5_note" /><input type="hidden" value="pass" name="tc_5_result" /><br />
+			<span class="fieldLabel">Actual Staff Time: </span><select onchange="changed(5,this);;restrict(this);" size="1" name="RUNDATA_exectimestaff_5" class="selection">
+<option selected="selected" value="2">2</option><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="60">60</option><option value="120">120</option></select>
+<br />
+			<span class="fieldLabel">Problem Report IDs: </span><input type="text" onchange="changed(5,this);" value="" name="RUNDATA_atm_prid_5" size="38" maxlength="255" /><br />
+			<span class="fieldLabel">Problem Report Links <span class="textareaStyle">(formatted)</span>: </span><div class="indent"><div><textarea onchange="changed(5,this);" name="RUNDATA_atm_prlink_5" cols="38" rows="5"></textarea></div></div><br />
+			<span class="fieldLabel">Execution Notes: </span><div><textarea rows="10" style="width:98%" onchange="changed(5,this);" wrap="soft" name="note_5"></textarea></div>Previous results for this test:
+<div class="indent">
+<p class="noteHeader">Run by Yoyo Xu on Mar 05   2:05AM CST: Result: <font color="#64bd1b">pass</font>, Staff Time: 2m</p><p class="noteHeader">Notes from Ying Yang at Mar 05   2:02AM CST:</p><p class="noteHeader">Run by Ying Yang on Mar 04   1:32AM CST: Result: <font color="#64bd1b">pass</font>, Staff Time: 2m</p></div> <span class="control">[<a href="javascript:uploadFile('SsdtTests.dir/Diagnostics.dir/SCTDataTable.dir/Generic.bts','&amp;tid=5&amp;sessNum=002451/Nightly&amp;atm_id=4A7C5116-E685-11E1-B98B-D744C6C7364A');">Upload File</a>]</span> <span class="control">[<a onclick="resetRundata('5'); return false;" href="#">Reset Run Info</a>]</span>
+			</td>
+		</tr>
+
+		<tr class="header">
+			<th colspan="3" class="left right tleft">
+			<span class="fieldLabel">Test Case: </span><a href="/atm/browse/viewTestCase.mpl?suite=FCD&amp;atm_id=3B84EE20-F012-11E1-AE83-6A03C6C7364A&amp;tid=6&amp;sessNum=002451" target="_blank" class="TYPE_tc_id">SsdtTests/ Diagnostics/ SCTWriteSame/ Generic</a>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table class="TYPE_tc_table" style="width:98%">
+<tbody><tr class="header"><th colspan="5" class="left right">Test Process</th></tr>
+<tr class="header">
+<th class="left">#</th><th>Test Procedure</th>
+<th>Verification Procedure</th>
+<th width="1%">Result</th>
+<th class="right">Notes from each step</th>
+</tr>
+<tr>
+<td align="right"><b>1.</b></td><td><p>Run TestSCTWriteSame.py on a drive specified by the Test Session.</p>
+</td>
+<td></td>
+<td class="center"><select onchange="updateResult(this,0)" name="results-0_6"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested</option><option value="pass">pass</option><option value="unsupported">unsupported</option><option value="blocked">blocked</option><option value="unresolved">unresolved</option><option value="fail">fail</option><option value="incomplete">incomplete</option></select></td><td><span class="rownote"><textarea size="40" multiple="multiple" onchange="changed(6,this);" wrap="soft" name="atm_step_notes-0_6"></textarea></span></td></tr>
+</tbody></table>
+ 
+			</td>
+			<td width="40%" valign="top">
+			<span class="fieldLabel">Result: </span><select onchange="changed(6,this);" name="results_6"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested - The feature was not tested</option><option value="pass">pass - The test passed</option><option value="unsupported">unsupported - Feature not supported</option><option value="blocked">blocked - Test case could not be started</option><option value="unresolved">unresolved - Result could not be determined</option><option value="fail">fail - The test failed</option><option value="incomplete">incomplete - The test has been started</option></select> <span class="control">[<a href="javascript:callBTS('tc_6');">Submit a Bug Report</a>]</span> <input type="hidden" value="3B84EE20-F012-11E1-AE83-6A03C6C7364A" name="tc_6_uuid" /><input type="hidden" value="SsdtTests.dir/Diagnostics.dir/SCTWriteSame.dir/Generic.bts" name="tc_6_test" /><input type="hidden" value="Previous%20results%20for%20this%20test:%0a%0aRun%20by%20Yoyo%20Xu%20on%20Mar%2005%20%20%202:05AM%20CST:%20Result:%20pass,%20Staff%20Time:%202mRun%20by%20Ying%20Yang%20on%20Mar%2005%20%20%202:02AM%20CST:%20Result:%20pass,%20Staff%20Time:%202m" name="tc_6_note" /><input type="hidden" value="pass" name="tc_6_result" /><br />
+			<span class="fieldLabel">Actual Staff Time: </span><select onchange="changed(6,this);;restrict(this);" size="1" name="RUNDATA_exectimestaff_6" class="selection">
+<option selected="selected" value="2">2</option><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="60">60</option><option value="120">120</option></select>
+<br />
+			<span class="fieldLabel">Problem Report IDs: </span><input type="text" onchange="changed(6,this);" value="" name="RUNDATA_atm_prid_6" size="38" maxlength="255" /><br />
+			<span class="fieldLabel">Problem Report Links <span class="textareaStyle">(formatted)</span>: </span><div class="indent"><div><textarea onchange="changed(6,this);" name="RUNDATA_atm_prlink_6" cols="38" rows="5"></textarea></div></div><br />
+			<span class="fieldLabel">Execution Notes: </span><div><textarea rows="10" style="width:98%" onchange="changed(6,this);" wrap="soft" name="note_6"></textarea></div>Previous results for this test:
+<div class="indent">
+<p class="noteHeader">Run by Yoyo Xu on Mar 05   2:05AM CST: Result: <font color="#64bd1b">pass</font>, Staff Time: 2m</p><p class="noteHeader">Run by Ying Yang on Mar 05   2:02AM CST: Result: <font color="#64bd1b">pass</font>, Staff Time: 2m</p></div> <span class="control">[<a href="javascript:uploadFile('SsdtTests.dir/Diagnostics.dir/SCTWriteSame.dir/Generic.bts','&amp;tid=6&amp;sessNum=002451/Nightly&amp;atm_id=3B84EE20-F012-11E1-AE83-6A03C6C7364A');">Upload File</a>]</span> <span class="control">[<a onclick="resetRundata('6'); return false;" href="#">Reset Run Info</a>]</span>
+			</td>
+		</tr>
+
+		<tr class="header">
+			<th colspan="3" class="left right tleft">
+			<span class="fieldLabel">Test Case: </span><a href="/atm/browse/viewTestCase.mpl?suite=FCD&amp;atm_id=26651D28-E9C5-11E2-8619-1B2FC6C7364A&amp;tid=7&amp;sessNum=002451" target="_blank" class="TYPE_tc_id">SsdtTests/ Security/ SecureErase/ EnhancedSecurityErase</a>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table class="TYPE_tc_table" style="width:98%">
+<tbody><tr class="header"><th colspan="5" class="left right">Test Process</th></tr>
+<tr class="header">
+<th class="left">#</th><th>Test Procedure</th>
+<th>Verification Procedure</th>
+<th width="1%">Result</th>
+<th class="right">Notes from each step</th>
+</tr>
+<tr>
+<td align="right"><b>1.</b></td><td><p>Test  <span style="font-family: 'Calibri','sans-serif'; font-size: 9pt;">TestSecurityErase.py -mode=1 --precondition=2</span>on a drive specified by test session.</p>
+</td>
+<td><p>Script should pass without any error.</p>
+</td>
+<td class="center"><select onchange="updateResult(this,0)" name="results-0_7"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested</option><option value="pass">pass</option><option value="unsupported">unsupported</option><option value="blocked">blocked</option><option value="unresolved">unresolved</option><option value="fail">fail</option><option value="incomplete">incomplete</option></select></td><td><span class="rownote"><textarea size="40" multiple="multiple" onchange="changed(7,this);" wrap="soft" name="atm_step_notes-0_7"></textarea></span></td></tr>
+</tbody></table>
+ 
+			</td>
+			<td width="40%" valign="top">
+			<span class="fieldLabel">Result: </span><select onchange="changed(7,this);" name="results_7"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested - The feature was not tested</option><option value="pass">pass - The test passed</option><option value="unsupported">unsupported - Feature not supported</option><option value="blocked">blocked - Test case could not be started</option><option value="unresolved">unresolved - Result could not be determined</option><option value="fail">fail - The test failed</option><option value="incomplete">incomplete - The test has been started</option></select> <span class="control">[<a href="javascript:callBTS('tc_7');">Submit a Bug Report</a>]</span> <input type="hidden" value="26651D28-E9C5-11E2-8619-1B2FC6C7364A" name="tc_7_uuid" /><input type="hidden" value="SsdtTests.dir/Security.dir/SecureErase.dir/EnhancedSecurityErase.bts" name="tc_7_test" /><input type="hidden" value="Previous%20results%20for%20this%20test:%0a%0aRun%20by%20Yoyo%20Xu%20on%20Mar%2005%20%20%202:05AM%20CST:%20Result:%20pass,%20Staff%20Time:%202mRun%20by%20Ying%20Yang%20on%20Mar%2005%20%20%202:02AM%20CST:%20Result:%20pass,%20Staff%20Time:%202m" name="tc_7_note" /><input type="hidden" value="pass" name="tc_7_result" /><br />
+			<span class="fieldLabel">Actual Staff Time: </span><select onchange="changed(7,this);;restrict(this);" size="1" name="RUNDATA_exectimestaff_7" class="selection">
+<option selected="selected" value="2">2</option><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="60">60</option><option value="120">120</option></select>
+<br />
+			<span class="fieldLabel">Problem Report IDs: </span><input type="text" onchange="changed(7,this);" value="" name="RUNDATA_atm_prid_7" size="38" maxlength="255" /><br />
+			<span class="fieldLabel">Problem Report Links <span class="textareaStyle">(formatted)</span>: </span><div class="indent"><div><textarea onchange="changed(7,this);" name="RUNDATA_atm_prlink_7" cols="38" rows="5"></textarea></div></div><br />
+			<span class="fieldLabel">Execution Notes: </span><div><textarea rows="10" style="width:98%" onchange="changed(7,this);" wrap="soft" name="note_7"></textarea></div>Previous results for this test:
+<div class="indent">
+<p class="noteHeader">Run by Yoyo Xu on Mar 05   2:05AM CST: Result: <font color="#64bd1b">pass</font>, Staff Time: 2m</p><p class="noteHeader">Run by Ying Yang on Mar 05   2:02AM CST: Result: <font color="#64bd1b">pass</font>, Staff Time: 2m</p></div> <span class="control">[<a href="javascript:uploadFile('SsdtTests.dir/Security.dir/SecureErase.dir/EnhancedSecurityErase.bts','&amp;tid=7&amp;sessNum=002451/Nightly&amp;atm_id=26651D28-E9C5-11E2-8619-1B2FC6C7364A');">Upload File</a>]</span> <span class="control">[<a onclick="resetRundata('7'); return false;" href="#">Reset Run Info</a>]</span>
+			</td>
+		</tr>
+
+		<tr class="header">
+			<th colspan="3" class="left right tleft">
+			<span class="fieldLabel">Test Case: </span><a href="/atm/browse/viewTestCase.mpl?suite=FCD&amp;atm_id=1D913438-2E05-11E2-8D61-4F45C6C7364A&amp;tid=8&amp;sessNum=002451" target="_blank" class="TYPE_tc_id">SsdtTests/ PowerStates/ PMstateCheckAll/ Generic</a>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table class="TYPE_tc_table" style="width:98%">
+<tbody><tr class="header"><th colspan="5" class="left right">Test Process</th></tr>
+<tr class="header">
+<th class="left">#</th><th>Test Procedure</th>
+<th>Verification Procedure</th>
+<th width="1%">Result</th>
+<th class="right">Notes from each step</th>
+</tr>
+<tr>
+<td align="right"><b>1.</b></td><td><h5>Run PMstateCheckAll.py on a drive specified by test session.</h5>
+</td>
+<td><p>Script should pass without any error.</p>
+</td>
+<td class="center"><select onchange="updateResult(this,0)" name="results-0_8"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested</option><option value="pass">pass</option><option value="unsupported">unsupported</option><option value="blocked">blocked</option><option value="unresolved">unresolved</option><option value="fail">fail</option><option value="incomplete">incomplete</option></select></td><td><span class="rownote"><textarea size="40" multiple="multiple" onchange="changed(8,this);" wrap="soft" name="atm_step_notes-0_8"></textarea></span></td></tr>
+</tbody></table>
+ 
+			</td>
+			<td width="40%" valign="top">
+			<span class="fieldLabel">Result: </span><select onchange="changed(8,this);" name="results_8"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested - The feature was not tested</option><option value="pass">pass - The test passed</option><option value="unsupported">unsupported - Feature not supported</option><option value="blocked">blocked - Test case could not be started</option><option value="unresolved">unresolved - Result could not be determined</option><option value="fail">fail - The test failed</option><option value="incomplete">incomplete - The test has been started</option></select> <span class="control">[<a href="javascript:callBTS('tc_8');">Submit a Bug Report</a>]</span> <input type="hidden" value="1D913438-2E05-11E2-8D61-4F45C6C7364A" name="tc_8_uuid" /><input type="hidden" value="SsdtTests.dir/PowerStates.dir/PMstateCheckAll.dir/Generic.bts" name="tc_8_test" /><input type="hidden" value="Previous%20results%20for%20this%20test:%0a%0aRun%20by%20Yoyo%20Xu%20on%20Mar%2005%20%20%202:05AM%20CST:%20Result:%20fail,%20Staff%20Time:%202mRun%20by%20Ying%20Yang%20on%20Mar%2005%20%20%202:02AM%20CST:%20Result:%20fail,%20Staff%20Time:%202m" name="tc_8_note" /><input type="hidden" value="fail" name="tc_8_result" /><br />
+			<span class="fieldLabel">Actual Staff Time: </span><select onchange="changed(8,this);;restrict(this);" size="1" name="RUNDATA_exectimestaff_8" class="selection">
+<option selected="selected" value="2">2</option><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="60">60</option><option value="120">120</option></select>
+<br />
+			<span class="fieldLabel">Problem Report IDs: </span><input type="text" onchange="changed(8,this);" value="" name="RUNDATA_atm_prid_8" size="38" maxlength="255" /><br />
+			<span class="fieldLabel">Problem Report Links <span class="textareaStyle">(formatted)</span>: </span><div class="indent"><div><textarea onchange="changed(8,this);" name="RUNDATA_atm_prlink_8" cols="38" rows="5"></textarea></div></div><br />
+			<span class="fieldLabel">Execution Notes: </span><div><textarea rows="10" style="width:98%" onchange="changed(8,this);" wrap="soft" name="note_8"></textarea></div>Previous results for this test:
+<div class="indent">
+<p class="noteHeader">Run by Yoyo Xu on Mar 05   2:05AM CST: Result: <font color="#f84200">fail</font>, Staff Time: 2m</p><p class="noteHeader">Run by Ying Yang on Mar 05   2:02AM CST: Result: <font color="#f84200">fail</font>, Staff Time: 2m</p></div> <span class="control">[<a href="javascript:uploadFile('SsdtTests.dir/PowerStates.dir/PMstateCheckAll.dir/Generic.bts','&amp;tid=8&amp;sessNum=002451/Nightly&amp;atm_id=1D913438-2E05-11E2-8D61-4F45C6C7364A');">Upload File</a>]</span> <span class="control">[<a onclick="resetRundata('8'); return false;" href="#">Reset Run Info</a>]</span>
+			</td>
+		</tr>
+
+		<tr class="header">
+			<th colspan="3" class="left right tleft">
+			<span class="fieldLabel">Test Case: </span><a href="/atm/browse/viewTestCase.mpl?suite=FCD&amp;atm_id=8264769A-3A1C-11E2-976F-F045C6C7364A&amp;tid=9&amp;sessNum=002451" target="_blank" class="TYPE_tc_id">SsdtTests/ SetFeature/ Generic</a>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table class="TYPE_tc_table" style="width:98%">
+<tbody><tr class="header"><th colspan="5" class="left right">Test Process</th></tr>
+<tr class="header">
+<th class="left">#</th><th>Test Procedure</th>
+<th>Verification Procedure</th>
+<th width="1%">Result</th>
+<th class="right">Notes from each step</th>
+</tr>
+<tr>
+<td align="right"><b>1.</b></td><td><p>Run TestSetFeature.py on a drive specified by test session.</p>
+</td>
+<td><p>Script should pass without any error.</p>
+</td>
+<td class="center"><select onchange="updateResult(this,0)" name="results-0_9"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested</option><option value="pass">pass</option><option value="unsupported">unsupported</option><option value="blocked">blocked</option><option value="unresolved">unresolved</option><option value="fail">fail</option><option value="incomplete">incomplete</option></select></td><td><span class="rownote"><textarea size="40" multiple="multiple" onchange="changed(9,this);" wrap="soft" name="atm_step_notes-0_9"></textarea></span></td></tr>
+</tbody></table>
+ 
+			</td>
+			<td width="40%" valign="top">
+			<span class="fieldLabel">Result: </span><select onchange="changed(9,this);" name="results_9"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested - The feature was not tested</option><option value="pass">pass - The test passed</option><option value="unsupported">unsupported - Feature not supported</option><option value="blocked">blocked - Test case could not be started</option><option value="unresolved">unresolved - Result could not be determined</option><option value="fail">fail - The test failed</option><option value="incomplete">incomplete - The test has been started</option></select> <span class="control">[<a href="javascript:callBTS('tc_9');">Submit a Bug Report</a>]</span> <input type="hidden" value="8264769A-3A1C-11E2-976F-F045C6C7364A" name="tc_9_uuid" /><input type="hidden" value="SsdtTests.dir/SetFeature.dir/Generic.bts" name="tc_9_test" /><input type="hidden" value="Previous%20results%20for%20this%20test:%0a%0aRun%20by%20Yoyo%20Xu%20on%20Mar%2005%20%20%202:05AM%20CST:%20Result:%20pass,%20Staff%20Time:%202mRun%20by%20Ying%20Yang%20on%20Mar%2005%20%20%202:02AM%20CST:%20Result:%20pass,%20Staff%20Time:%202m" name="tc_9_note" /><input type="hidden" value="pass" name="tc_9_result" /><br />
+			<span class="fieldLabel">Actual Staff Time: </span><select onchange="changed(9,this);;restrict(this);" size="1" name="RUNDATA_exectimestaff_9" class="selection">
+<option selected="selected" value="2">2</option><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="60">60</option><option value="120">120</option></select>
+<br />
+			<span class="fieldLabel">Problem Report IDs: </span><input type="text" onchange="changed(9,this);" value="" name="RUNDATA_atm_prid_9" size="38" maxlength="255" /><br />
+			<span class="fieldLabel">Problem Report Links <span class="textareaStyle">(formatted)</span>: </span><div class="indent"><div><textarea onchange="changed(9,this);" name="RUNDATA_atm_prlink_9" cols="38" rows="5"></textarea></div></div><br />
+			<span class="fieldLabel">Execution Notes: </span><div><textarea rows="10" style="width:98%" onchange="changed(9,this);" wrap="soft" name="note_9"></textarea></div>Previous results for this test:
+<div class="indent">
+<p class="noteHeader">Run by Yoyo Xu on Mar 05   2:05AM CST: Result: <font color="#64bd1b">pass</font>, Staff Time: 2m</p><p class="noteHeader">Run by Ying Yang on Mar 05   2:02AM CST: Result: <font color="#64bd1b">pass</font>, Staff Time: 2m</p></div> <span class="control">[<a href="javascript:uploadFile('SsdtTests.dir/SetFeature.dir/Generic.bts','&amp;tid=9&amp;sessNum=002451/Nightly&amp;atm_id=8264769A-3A1C-11E2-976F-F045C6C7364A');">Upload File</a>]</span> <span class="control">[<a onclick="resetRundata('9'); return false;" href="#">Reset Run Info</a>]</span>
+			</td>
+		</tr>
+
+		<tr class="header">
+			<th colspan="3" class="left right tleft">
+			<span class="fieldLabel">Test Case: </span><a href="/atm/browse/viewTestCase.mpl?suite=FCD&amp;atm_id=A2794DB4-8168-11E2-B245-693FC6C7364A&amp;tid=10&amp;sessNum=002451" target="_blank" class="TYPE_tc_id">SsdtTests/ ClientUnsafePwrCycle/ Generic</a>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table class="TYPE_tc_table" style="width:98%">
+<tbody><tr class="header"><th colspan="5" class="left right">Test Process</th></tr>
+<tr class="header">
+<th class="left">#</th><th>Test Procedure</th>
+<th>Verification Procedure</th>
+<th width="1%">Result</th>
+<th class="right">Notes from each step</th>
+</tr>
+<tr>
+<td align="right"><b>1.</b></td><td><h4>Client Testing</h4>
+<h5>Run TestPowerCheckpoint.py on drive specified by test session.  Please specify --unsafed.</h5>
+</td>
+<td></td>
+<td class="center"><select onchange="updateResult(this,0)" name="results-0_10"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested</option><option value="pass">pass</option><option value="unsupported">unsupported</option><option value="blocked">blocked</option><option value="unresolved">unresolved</option><option value="fail">fail</option><option value="incomplete">incomplete</option></select></td><td><span class="rownote"><textarea size="40" multiple="multiple" onchange="changed(10,this);" wrap="soft" name="atm_step_notes-0_10"></textarea></span></td></tr>
+</tbody></table>
+ 
+			</td>
+			<td width="40%" valign="top">
+			<span class="fieldLabel">Result: </span><select onchange="changed(10,this);" name="results_10"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested - The feature was not tested</option><option value="pass">pass - The test passed</option><option value="unsupported">unsupported - Feature not supported</option><option value="blocked">blocked - Test case could not be started</option><option value="unresolved">unresolved - Result could not be determined</option><option value="fail">fail - The test failed</option><option value="incomplete">incomplete - The test has been started</option></select> <span class="control">[<a href="javascript:callBTS('tc_10');">Submit a Bug Report</a>]</span> <input type="hidden" value="A2794DB4-8168-11E2-B245-693FC6C7364A" name="tc_10_uuid" /><input type="hidden" value="SsdtTests.dir/ClientUnsafePwrCycle.dir/Generic.bts" name="tc_10_test" /><input type="hidden" value="Previous%20results%20for%20this%20test:%0a%0aRun%20by%20Yoyo%20Xu%20on%20Mar%2005%20%20%202:05AM%20CST:%20Result:%20pass,%20Staff%20Time:%202mRun%20by%20Ying%20Yang%20on%20Mar%2004%20%20%201:32AM%20CST:%20Result:%20pass,%20Staff%20Time:%202m" name="tc_10_note" /><input type="hidden" value="pass" name="tc_10_result" /><br />
+			<span class="fieldLabel">Actual Staff Time: </span><select onchange="changed(10,this);;restrict(this);" size="1" name="RUNDATA_exectimestaff_10" class="selection">
+<option selected="selected" value="2">2</option><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="60">60</option><option value="120">120</option></select>
+<br />
+			<span class="fieldLabel">Problem Report IDs: </span><input type="text" onchange="changed(10,this);" value="" name="RUNDATA_atm_prid_10" size="38" maxlength="255" /><br />
+			<span class="fieldLabel">Problem Report Links <span class="textareaStyle">(formatted)</span>: </span><div class="indent"><div><textarea onchange="changed(10,this);" name="RUNDATA_atm_prlink_10" cols="38" rows="5"></textarea></div></div><br />
+			<span class="fieldLabel">Execution Notes: </span><div><textarea rows="10" style="width:98%" onchange="changed(10,this);" wrap="soft" name="note_10"></textarea></div>Previous results for this test:
+<div class="indent">
+<p class="noteHeader">Run by Yoyo Xu on Mar 05   2:05AM CST: Result: <font color="#64bd1b">pass</font>, Staff Time: 2m</p><p class="noteHeader">Run by Ying Yang on Mar 04   1:32AM CST: Result: <font color="#64bd1b">pass</font>, Staff Time: 2m</p></div> <span class="control">[<a href="javascript:uploadFile('SsdtTests.dir/ClientUnsafePwrCycle.dir/Generic.bts','&amp;tid=10&amp;sessNum=002451/Nightly&amp;atm_id=A2794DB4-8168-11E2-B245-693FC6C7364A');">Upload File</a>]</span> <span class="control">[<a onclick="resetRundata('10'); return false;" href="#">Reset Run Info</a>]</span>
+			</td>
+		</tr>
+
+		<tr class="header">
+			<th colspan="3" class="left right tleft">
+			<span class="fieldLabel">Test Case: </span><a href="/atm/browse/viewTestCase.mpl?suite=FCD&amp;atm_id=59A97586-951D-11E3-BE21-5035C6C7364A&amp;tid=11&amp;sessNum=002451" target="_blank" class="TYPE_tc_id">SsdtTests/ ErrorHandling/ TestEccx</a>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table class="TYPE_tc_table" style="width:98%">
+<tbody><tr class="header"><th colspan="5" class="left right">Test Process</th></tr>
+<tr class="header">
+<th class="left">#</th><th>Test Procedure</th>
+<th>Verification Procedure</th>
+<th width="1%">Result</th>
+<th class="right">Notes from each step</th>
+</tr>
+<tr>
+<td align="right"><b>1.</b></td><td><p>Run script <span style="color: #000000;"><span style="font-size: 8pt; font-family: 'Times New Roman','serif'; mso-fareast-font-family: SimSun; mso-fareast-theme-font: minor-fareast; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA;">TestEccx</span><span style="font-size: 8pt; font-family: 'Times New Roman','serif'; mso-fareast-font-family: SimSun; mso-fareast-theme-font: minor-fareast; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA;">.py</span></span></p>
+</td>
+<td></td>
+<td class="center"><select onchange="updateResult(this,0)" name="results-0_11"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested</option><option value="pass">pass</option><option value="unsupported">unsupported</option><option value="blocked">blocked</option><option value="unresolved">unresolved</option><option value="fail">fail</option><option value="incomplete">incomplete</option></select></td><td><span class="rownote"><textarea size="40" multiple="multiple" onchange="changed(11,this);" wrap="soft" name="atm_step_notes-0_11"></textarea></span></td></tr>
+</tbody></table>
+ 
+			</td>
+			<td width="40%" valign="top">
+			<span class="fieldLabel">Result: </span><select onchange="changed(11,this);" name="results_11"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested - The feature was not tested</option><option value="pass">pass - The test passed</option><option value="unsupported">unsupported - Feature not supported</option><option value="blocked">blocked - Test case could not be started</option><option value="unresolved">unresolved - Result could not be determined</option><option value="fail">fail - The test failed</option><option value="incomplete">incomplete - The test has been started</option></select> <span class="control">[<a href="javascript:callBTS('tc_11');">Submit a Bug Report</a>]</span> <input type="hidden" value="59A97586-951D-11E3-BE21-5035C6C7364A" name="tc_11_uuid" /><input type="hidden" value="SsdtTests.dir/ErrorHandling.dir/TestEccx.bts" name="tc_11_test" /><input type="hidden" value="Previous%20results%20for%20this%20test:%0a%0aRun%20by%20Yoyo%20Xu%20on%20Mar%2005%20%20%202:05AM%20CST:%20Result:%20pass,%20Staff%20Time:%202mRun%20by%20Ying%20Yang%20on%20Mar%2004%20%20%201:32AM%20CST:%20Result:%20pass,%20Staff%20Time:%202m" name="tc_11_note" /><input type="hidden" value="pass" name="tc_11_result" /><br />
+			<span class="fieldLabel">Actual Staff Time: </span><select onchange="changed(11,this);;restrict(this);" size="1" name="RUNDATA_exectimestaff_11" class="selection">
+<option selected="selected" value="2">2</option><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="60">60</option><option value="120">120</option></select>
+<br />
+			<span class="fieldLabel">Problem Report IDs: </span><input type="text" onchange="changed(11,this);" value="" name="RUNDATA_atm_prid_11" size="38" maxlength="255" /><br />
+			<span class="fieldLabel">Problem Report Links <span class="textareaStyle">(formatted)</span>: </span><div class="indent"><div><textarea onchange="changed(11,this);" name="RUNDATA_atm_prlink_11" cols="38" rows="5"></textarea></div></div><br />
+			<span class="fieldLabel">Execution Notes: </span><div><textarea rows="10" style="width:98%" onchange="changed(11,this);" wrap="soft" name="note_11"></textarea></div>Previous results for this test:
+<div class="indent">
+<p class="noteHeader">Run by Yoyo Xu on Mar 05   2:05AM CST: Result: <font color="#64bd1b">pass</font>, Staff Time: 2m</p><p class="noteHeader">Run by Ying Yang on Mar 04   1:32AM CST: Result: <font color="#64bd1b">pass</font>, Staff Time: 2m</p></div> <span class="control">[<a href="javascript:uploadFile('SsdtTests.dir/ErrorHandling.dir/TestEccx.bts','&amp;tid=11&amp;sessNum=002451/Nightly&amp;atm_id=59A97586-951D-11E3-BE21-5035C6C7364A');">Upload File</a>]</span> <span class="control">[<a onclick="resetRundata('11'); return false;" href="#">Reset Run Info</a>]</span>
+			</td>
+		</tr>
+
+		<tr class="header">
+			<th colspan="3" class="left right tleft">
+			<span class="fieldLabel">Test Case: </span><a href="/atm/browse/viewTestCase.mpl?suite=FCD&amp;atm_id=D9C3E5AE-0E8B-11E2-8FC3-48E1C5C7364A&amp;tid=12&amp;sessNum=002451" target="_blank" class="TYPE_tc_id">SsdtTests/ WriteSpeed/ Generic</a>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table class="TYPE_tc_table" style="width:98%">
+<tbody><tr class="header"><th colspan="5" class="left right">Test Process</th></tr>
+<tr class="header">
+<th class="left">#</th><th>Test Procedure</th>
+<th>Verification Procedure</th>
+<th width="1%">Result</th>
+<th class="right">Notes from each step</th>
+</tr>
+<tr>
+<td align="right"><b>1.</b></td><td><p>Test write speed variation with TestWriteSpeed.py</p>
+</td>
+<td></td>
+<td class="center"><select onchange="updateResult(this,0)" name="results-0_12"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested</option><option value="pass">pass</option><option value="unsupported">unsupported</option><option value="blocked">blocked</option><option value="unresolved">unresolved</option><option value="fail">fail</option><option value="incomplete">incomplete</option></select></td><td><span class="rownote"><textarea size="40" multiple="multiple" onchange="changed(12,this);" wrap="soft" name="atm_step_notes-0_12"></textarea></span></td></tr>
+</tbody></table>
+ 
+			</td>
+			<td width="40%" valign="top">
+			<span class="fieldLabel">Result: </span><select onchange="changed(12,this);" name="results_12"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested - The feature was not tested</option><option value="pass">pass - The test passed</option><option value="unsupported">unsupported - Feature not supported</option><option value="blocked">blocked - Test case could not be started</option><option value="unresolved">unresolved - Result could not be determined</option><option value="fail">fail - The test failed</option><option value="incomplete">incomplete - The test has been started</option></select> <span class="control">[<a href="javascript:callBTS('tc_12');">Submit a Bug Report</a>]</span> <input type="hidden" value="D9C3E5AE-0E8B-11E2-8FC3-48E1C5C7364A" name="tc_12_uuid" /><input type="hidden" value="SsdtTests.dir/WriteSpeed.dir/Generic.bts" name="tc_12_test" /><input type="hidden" value="Previous%20results%20for%20this%20test:%0a%0aRun%20by%20Yoyo%20Xu%20on%20Mar%2005%20%20%202:05AM%20CST:%20Result:%20untested,%20Staff%20Time:%202m" name="tc_12_note" /><input type="hidden" value="untested" name="tc_12_result" /><br />
+			<span class="fieldLabel">Actual Staff Time: </span><select onchange="changed(12,this);;restrict(this);" size="1" name="RUNDATA_exectimestaff_12" class="selection">
+<option selected="selected" value="2">2</option><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="60">60</option><option value="120">120</option></select>
+<br />
+			<span class="fieldLabel">Problem Report IDs: </span><input type="text" onchange="changed(12,this);" value="" name="RUNDATA_atm_prid_12" size="38" maxlength="255" /><br />
+			<span class="fieldLabel">Problem Report Links <span class="textareaStyle">(formatted)</span>: </span><div class="indent"><div><textarea onchange="changed(12,this);" name="RUNDATA_atm_prlink_12" cols="38" rows="5"></textarea></div></div><br />
+			<span class="fieldLabel">Execution Notes: </span><div><textarea rows="10" style="width:98%" onchange="changed(12,this);" wrap="soft" name="note_12"></textarea></div>Previous results for this test:
+<div class="indent">
+<p class="noteHeader">Run by Yoyo Xu on Mar 05   2:05AM CST: Result: <font color="#808080">untested</font>, Staff Time: 2m</p></div> <span class="control">[<a href="javascript:uploadFile('SsdtTests.dir/WriteSpeed.dir/Generic.bts','&amp;tid=12&amp;sessNum=002451/Nightly&amp;atm_id=D9C3E5AE-0E8B-11E2-8FC3-48E1C5C7364A');">Upload File</a>]</span> <span class="control">[<a onclick="resetRundata('12'); return false;" href="#">Reset Run Info</a>]</span>
+			</td>
+		</tr>
+
+		<tr class="header">
+			<th colspan="3" class="left right tleft">
+			<span class="fieldLabel">Test Case: </span><a href="/atm/browse/viewTestCase.mpl?suite=FCD&amp;atm_id=985543D0-E9DA-11E2-A7A9-163CC6C7364A&amp;tid=13&amp;sessNum=002451" target="_blank" class="TYPE_tc_id">Drive_Master_developed_internally/ ReadLookAhead/ Generic_unAligned_Comp</a>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table class="TYPE_tc_table" style="width:98%">
+<tbody><tr class="header"><th colspan="5" class="left right">Test Process</th></tr>
+<tr class="header">
+<th class="left">#</th><th>Test Procedure</th>
+<th>Verification Procedure</th>
+<th width="1%">Result</th>
+<th class="right">Notes from each step</th>
+</tr>
+<tr>
+<td align="right"><b>1.</b></td><td><p><span style="font-family: helvetica; font-size: x-small;">Run TestLookAheadReliability.srt  on a drive specified by test session.<br />
+
+When Msgbox displays "Run test with aligned LBAs? (): No, *1: Yes), enter 0<br />
+
+When Msgbox displays "Run test with data compare? (*0: No, 1: Yes) enter 1</span></p>
+</td>
+<td><p>Script should pass without any error.</p>
+</td>
+<td class="center"><select onchange="updateResult(this,0)" name="results-0_13"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested</option><option value="pass">pass</option><option value="unsupported">unsupported</option><option value="blocked">blocked</option><option value="unresolved">unresolved</option><option value="fail">fail</option><option value="incomplete">incomplete</option></select></td><td><span class="rownote"><textarea size="40" multiple="multiple" onchange="changed(13,this);" wrap="soft" name="atm_step_notes-0_13"></textarea></span></td></tr>
+</tbody></table>
+ 
+			</td>
+			<td width="40%" valign="top">
+			<span class="fieldLabel">Result: </span><select onchange="changed(13,this);" name="results_13"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested - The feature was not tested</option><option value="pass">pass - The test passed</option><option value="unsupported">unsupported - Feature not supported</option><option value="blocked">blocked - Test case could not be started</option><option value="unresolved">unresolved - Result could not be determined</option><option value="fail">fail - The test failed</option><option value="incomplete">incomplete - The test has been started</option></select> <span class="control">[<a href="javascript:callBTS('tc_13');">Submit a Bug Report</a>]</span> <input type="hidden" value="985543D0-E9DA-11E2-A7A9-163CC6C7364A" name="tc_13_uuid" /><input type="hidden" value="Drive_Master_developed_internally.dir/ReadLookAhead.dir/Generic_unAligned_Comp.bts" name="tc_13_test" /><input type="hidden" value="Previous%20results%20for%20this%20test:%0a%0aRun%20by%20Yoyo%20Xu%20on%20Mar%2005%20%20%202:05AM%20CST:%20Result:%20fail,%20Staff%20Time:%202m" name="tc_13_note" /><input type="hidden" value="fail" name="tc_13_result" /><br />
+			<span class="fieldLabel">Actual Staff Time: </span><select onchange="changed(13,this);;restrict(this);" size="1" name="RUNDATA_exectimestaff_13" class="selection">
+<option selected="selected" value="2">2</option><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="60">60</option><option value="120">120</option></select>
+<br />
+			<span class="fieldLabel">Problem Report IDs: </span><input type="text" onchange="changed(13,this);" value="" name="RUNDATA_atm_prid_13" size="38" maxlength="255" /><br />
+			<span class="fieldLabel">Problem Report Links <span class="textareaStyle">(formatted)</span>: </span><div class="indent"><div><textarea onchange="changed(13,this);" name="RUNDATA_atm_prlink_13" cols="38" rows="5"></textarea></div></div><br />
+			<span class="fieldLabel">Execution Notes: </span><div><textarea rows="10" style="width:98%" onchange="changed(13,this);" wrap="soft" name="note_13"></textarea></div>Previous results for this test:
+<div class="indent">
+<p class="noteHeader">Run by Yoyo Xu on Mar 05   2:05AM CST: Result: <font color="#f84200">fail</font>, Staff Time: 2m</p></div> <span class="control">[<a href="javascript:uploadFile('Drive_Master_developed_internally.dir/ReadLookAhead.dir/Generic_unAligned_Comp.bts','&amp;tid=13&amp;sessNum=002451/Nightly&amp;atm_id=985543D0-E9DA-11E2-A7A9-163CC6C7364A');">Upload File</a>]</span> <span class="control">[<a onclick="resetRundata('13'); return false;" href="#">Reset Run Info</a>]</span>
+			</td>
+		</tr>
+
+		<tr class="header">
+			<th colspan="3" class="left right tleft">
+			<span class="fieldLabel">Test Case: </span><a href="/atm/browse/viewTestCase.mpl?suite=FCD&amp;atm_id=C87E81C4-3B89-11E3-BC61-2A1EC6C7364A&amp;tid=14&amp;sessNum=002451" target="_blank" class="TYPE_tc_id">Drive_Master_developed_internally/ NCQRdWtByCmp/ NcqRdWtbyCmp</a>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table class="TYPE_tc_table" style="width:98%">
+<tbody><tr class="header"><th colspan="5" class="left right">Test Process</th></tr>
+<tr class="header">
+<th class="left">#</th><th>Test Procedure</th>
+<th>Verification Procedure</th>
+<th width="1%">Result</th>
+<th class="right">Notes from each step</th>
+</tr>
+<tr>
+<td align="right"><b>1.</b></td><td><p>Open NcqRdWtByCmp.srt in DriveMaster and run the script for 24 hours</p>
+</td>
+<td></td>
+<td class="center"><select onchange="updateResult(this,0)" name="results-0_14"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested</option><option value="pass">pass</option><option value="unsupported">unsupported</option><option value="blocked">blocked</option><option value="unresolved">unresolved</option><option value="fail">fail</option><option value="incomplete">incomplete</option></select></td><td><span class="rownote"><textarea size="40" multiple="multiple" onchange="changed(14,this);" wrap="soft" name="atm_step_notes-0_14"></textarea></span></td></tr>
+</tbody></table>
+ 
+			</td>
+			<td width="40%" valign="top">
+			<span class="fieldLabel">Result: </span><select onchange="changed(14,this);" name="results_14"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested - The feature was not tested</option><option value="pass">pass - The test passed</option><option value="unsupported">unsupported - Feature not supported</option><option value="blocked">blocked - Test case could not be started</option><option value="unresolved">unresolved - Result could not be determined</option><option value="fail">fail - The test failed</option><option value="incomplete">incomplete - The test has been started</option></select> <span class="control">[<a href="javascript:callBTS('tc_14');">Submit a Bug Report</a>]</span> <input type="hidden" value="C87E81C4-3B89-11E3-BC61-2A1EC6C7364A" name="tc_14_uuid" /><input type="hidden" value="Drive_Master_developed_internally.dir/NCQRdWtByCmp.dir/NcqRdWtbyCmp.bts" name="tc_14_test" /><input type="hidden" value="Previous%20results%20for%20this%20test:%0a%0aRun%20by%20Yoyo%20Xu%20on%20Mar%2005%20%20%202:05AM%20CST:%20Result:%20fail,%20Staff%20Time:%202m" name="tc_14_note" /><input type="hidden" value="fail" name="tc_14_result" /><br />
+			<span class="fieldLabel">Actual Staff Time: </span><select onchange="changed(14,this);;restrict(this);" size="1" name="RUNDATA_exectimestaff_14" class="selection">
+<option selected="selected" value="2">2</option><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="60">60</option><option value="120">120</option></select>
+<br />
+			<span class="fieldLabel">Problem Report IDs: </span><input type="text" onchange="changed(14,this);" value="" name="RUNDATA_atm_prid_14" size="38" maxlength="255" /><br />
+			<span class="fieldLabel">Problem Report Links <span class="textareaStyle">(formatted)</span>: </span><div class="indent"><div><textarea onchange="changed(14,this);" name="RUNDATA_atm_prlink_14" cols="38" rows="5"></textarea></div></div><br />
+			<span class="fieldLabel">Execution Notes: </span><div><textarea rows="10" style="width:98%" onchange="changed(14,this);" wrap="soft" name="note_14"></textarea></div>Previous results for this test:
+<div class="indent">
+<p class="noteHeader">Run by Yoyo Xu on Mar 05   2:05AM CST: Result: <font color="#f84200">fail</font>, Staff Time: 2m</p></div> <span class="control">[<a href="javascript:uploadFile('Drive_Master_developed_internally.dir/NCQRdWtByCmp.dir/NcqRdWtbyCmp.bts','&amp;tid=14&amp;sessNum=002451/Nightly&amp;atm_id=C87E81C4-3B89-11E3-BC61-2A1EC6C7364A');">Upload File</a>]</span> <span class="control">[<a onclick="resetRundata('14'); return false;" href="#">Reset Run Info</a>]</span>
+			</td>
+		</tr>
+
+		<tr class="header">
+			<th colspan="3" class="left right tleft">
+			<span class="fieldLabel">Test Case: </span><a href="/atm/browse/viewTestCase.mpl?suite=FCD&amp;atm_id=0DD458AC-3B14-11E1-B35B-81F7C5C7364A&amp;tid=15&amp;sessNum=002451" target="_blank" class="TYPE_tc_id">Drive_Master_developed_internally/ NCQ_Recovery/ NCQ_Recovery</a>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table class="TYPE_tc_table" style="width:98%">
+<tbody><tr class="header"><th colspan="5" class="left right">Test Process</th></tr>
+<tr class="header">
+<th class="left">#</th><th>Test Procedure</th>
+<th>Verification Procedure</th>
+<th width="1%">Result</th>
+<th class="right">Notes from each step</th>
+</tr>
+<tr>
+<td align="right"><b>1.</b></td><td><p>Use Genesis to install Firmware.<br />
+
+Run the Drive Master NCQ_Recovery.srt script on a 6G Drive Master host for 48 hours.</p>
+</td>
+<td><p>Test should pass.</p>
+</td>
+<td class="center"><select onchange="updateResult(this,0)" name="results-0_15"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested</option><option value="pass">pass</option><option value="unsupported">unsupported</option><option value="blocked">blocked</option><option value="unresolved">unresolved</option><option value="fail">fail</option><option value="incomplete">incomplete</option></select></td><td><span class="rownote"><textarea size="40" multiple="multiple" onchange="changed(15,this);" wrap="soft" name="atm_step_notes-0_15"></textarea></span></td></tr>
+</tbody></table>
+ 
+			</td>
+			<td width="40%" valign="top">
+			<span class="fieldLabel">Result: </span><select onchange="changed(15,this);" name="results_15"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested - The feature was not tested</option><option value="pass">pass - The test passed</option><option value="unsupported">unsupported - Feature not supported</option><option value="blocked">blocked - Test case could not be started</option><option value="unresolved">unresolved - Result could not be determined</option><option value="fail">fail - The test failed</option><option value="incomplete">incomplete - The test has been started</option></select> <span class="control">[<a href="javascript:callBTS('tc_15');">Submit a Bug Report</a>]</span> <input type="hidden" value="0DD458AC-3B14-11E1-B35B-81F7C5C7364A" name="tc_15_uuid" /><input type="hidden" value="Drive_Master_developed_internally.dir/NCQ_Recovery.dir/NCQ_Recovery.bts" name="tc_15_test" /><input type="hidden" value="Previous%20results%20for%20this%20test:%0a%0aRun%20by%20Yoyo%20Xu%20on%20Mar%2005%20%20%202:05AM%20CST:%20Result:%20untested,%20Staff%20Time:%202m" name="tc_15_note" /><input type="hidden" value="untested" name="tc_15_result" /><br />
+			<span class="fieldLabel">Actual Staff Time: </span><select onchange="changed(15,this);;restrict(this);" size="1" name="RUNDATA_exectimestaff_15" class="selection">
+<option selected="selected" value="2">2</option><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="60">60</option><option value="120">120</option></select>
+<br />
+			<span class="fieldLabel">Problem Report IDs: </span><input type="text" onchange="changed(15,this);" value="" name="RUNDATA_atm_prid_15" size="38" maxlength="255" /><br />
+			<span class="fieldLabel">Problem Report Links <span class="textareaStyle">(formatted)</span>: </span><div class="indent"><div><textarea onchange="changed(15,this);" name="RUNDATA_atm_prlink_15" cols="38" rows="5"></textarea></div></div><br />
+			<span class="fieldLabel">Execution Notes: </span><div><textarea rows="10" style="width:98%" onchange="changed(15,this);" wrap="soft" name="note_15"></textarea></div>Previous results for this test:
+<div class="indent">
+<p class="noteHeader">Run by Yoyo Xu on Mar 05   2:05AM CST: Result: <font color="#808080">untested</font>, Staff Time: 2m</p></div> <span class="control">[<a href="javascript:uploadFile('Drive_Master_developed_internally.dir/NCQ_Recovery.dir/NCQ_Recovery.bts','&amp;tid=15&amp;sessNum=002451/Nightly&amp;atm_id=0DD458AC-3B14-11E1-B35B-81F7C5C7364A');">Upload File</a>]</span> <span class="control">[<a onclick="resetRundata('15'); return false;" href="#">Reset Run Info</a>]</span>
+			</td>
+		</tr>
+
+		<tr class="header">
+			<th colspan="3" class="left right tleft">
+			<span class="fieldLabel">Test Case: </span><a href="/atm/browse/viewTestCase.mpl?suite=FCD&amp;atm_id=A0FEA9E4-F5BB-11E2-9BD6-911BC6C7364A&amp;tid=16&amp;sessNum=002451" target="_blank" class="TYPE_tc_id">Drive_Master_developed_internally/ Log/ LogAccesswithZeroCount</a>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table class="TYPE_tc_table" style="width:98%">
+<tbody><tr class="header"><th colspan="5" class="left right">Test Process</th></tr>
+<tr class="header">
+<th class="left">#</th><th>Test Procedure</th>
+<th>Verification Procedure</th>
+<th width="1%">Result</th>
+<th class="right">Notes from each step</th>
+</tr>
+<tr>
+<td align="right"><b>1.</b></td><td><p>Run Drive Master script TestLogAccessCmdwithInvalidZeroCount.srt on 6GB SATA port.</p>
+</td>
+<td><p>Test should pass without error.</p>
+</td>
+<td class="center"><select onchange="updateResult(this,0)" name="results-0_16"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested</option><option value="pass">pass</option><option value="unsupported">unsupported</option><option value="blocked">blocked</option><option value="unresolved">unresolved</option><option value="fail">fail</option><option value="incomplete">incomplete</option></select></td><td><span class="rownote"><textarea size="40" multiple="multiple" onchange="changed(16,this);" wrap="soft" name="atm_step_notes-0_16"></textarea></span></td></tr>
+</tbody></table>
+ 
+			</td>
+			<td width="40%" valign="top">
+			<span class="fieldLabel">Result: </span><select onchange="changed(16,this);" name="results_16"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested - The feature was not tested</option><option value="pass">pass - The test passed</option><option value="unsupported">unsupported - Feature not supported</option><option value="blocked">blocked - Test case could not be started</option><option value="unresolved">unresolved - Result could not be determined</option><option value="fail">fail - The test failed</option><option value="incomplete">incomplete - The test has been started</option></select> <span class="control">[<a href="javascript:callBTS('tc_16');">Submit a Bug Report</a>]</span> <input type="hidden" value="A0FEA9E4-F5BB-11E2-9BD6-911BC6C7364A" name="tc_16_uuid" /><input type="hidden" value="Drive_Master_developed_internally.dir/Log.dir/LogAccesswithZeroCount.bts" name="tc_16_test" /><input type="hidden" value="Previous%20results%20for%20this%20test:%0a%0aRun%20by%20Yoyo%20Xu%20on%20Mar%2005%20%20%202:05AM%20CST:%20Result:%20pass,%20Staff%20Time:%202m" name="tc_16_note" /><input type="hidden" value="pass" name="tc_16_result" /><br />
+			<span class="fieldLabel">Actual Staff Time: </span><select onchange="changed(16,this);;restrict(this);" size="1" name="RUNDATA_exectimestaff_16" class="selection">
+<option selected="selected" value="2">2</option><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="60">60</option><option value="120">120</option></select>
+<br />
+			<span class="fieldLabel">Problem Report IDs: </span><input type="text" onchange="changed(16,this);" value="" name="RUNDATA_atm_prid_16" size="38" maxlength="255" /><br />
+			<span class="fieldLabel">Problem Report Links <span class="textareaStyle">(formatted)</span>: </span><div class="indent"><div><textarea onchange="changed(16,this);" name="RUNDATA_atm_prlink_16" cols="38" rows="5"></textarea></div></div><br />
+			<span class="fieldLabel">Execution Notes: </span><div><textarea rows="10" style="width:98%" onchange="changed(16,this);" wrap="soft" name="note_16"></textarea></div>Previous results for this test:
+<div class="indent">
+<p class="noteHeader">Run by Yoyo Xu on Mar 05   2:05AM CST: Result: <font color="#64bd1b">pass</font>, Staff Time: 2m</p></div> <span class="control">[<a href="javascript:uploadFile('Drive_Master_developed_internally.dir/Log.dir/LogAccesswithZeroCount.bts','&amp;tid=16&amp;sessNum=002451/Nightly&amp;atm_id=A0FEA9E4-F5BB-11E2-9BD6-911BC6C7364A');">Upload File</a>]</span> <span class="control">[<a onclick="resetRundata('16'); return false;" href="#">Reset Run Info</a>]</span>
+			</td>
+		</tr>
+
+		<tr class="header">
+			<th colspan="3" class="left right tleft">
+			<span class="fieldLabel">Test Case: </span><a href="/atm/browse/viewTestCase.mpl?suite=FCD&amp;atm_id=2434A474-E9D9-11E2-B8EF-F43AC6C7364A&amp;tid=17&amp;sessNum=002451" target="_blank" class="TYPE_tc_id">Drive_Master_developed_internally/ ReadLookAhead/ Generic_Aligned_NoComp</a>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table class="TYPE_tc_table" style="width:98%">
+<tbody><tr class="header"><th colspan="5" class="left right">Test Process</th></tr>
+<tr class="header">
+<th class="left">#</th><th>Test Procedure</th>
+<th>Verification Procedure</th>
+<th width="1%">Result</th>
+<th class="right">Notes from each step</th>
+</tr>
+<tr>
+<td align="right"><b>1.</b></td><td><p><span style="font-family: helvetica; font-size: x-small;">Run TestLookAheadReliability.srt  on a drive specified by test session.<br />
+
+When Msgbox displays "Run test with aligned LBAs? (): No, *1: Yes), enter 1<br />
+
+When Msgbox displays "Run test with data compare? (*0: No, 1: Yes) enter 0</span></p>
+</td>
+<td><p>Script should pass without any error.</p>
+</td>
+<td class="center"><select onchange="updateResult(this,0)" name="results-0_17"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested</option><option value="pass">pass</option><option value="unsupported">unsupported</option><option value="blocked">blocked</option><option value="unresolved">unresolved</option><option value="fail">fail</option><option value="incomplete">incomplete</option></select></td><td><span class="rownote"><textarea size="40" multiple="multiple" onchange="changed(17,this);" wrap="soft" name="atm_step_notes-0_17"></textarea></span></td></tr>
+</tbody></table>
+ 
+			</td>
+			<td width="40%" valign="top">
+			<span class="fieldLabel">Result: </span><select onchange="changed(17,this);" name="results_17"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested - The feature was not tested</option><option value="pass">pass - The test passed</option><option value="unsupported">unsupported - Feature not supported</option><option value="blocked">blocked - Test case could not be started</option><option value="unresolved">unresolved - Result could not be determined</option><option value="fail">fail - The test failed</option><option value="incomplete">incomplete - The test has been started</option></select> <span class="control">[<a href="javascript:callBTS('tc_17');">Submit a Bug Report</a>]</span> <input type="hidden" value="2434A474-E9D9-11E2-B8EF-F43AC6C7364A" name="tc_17_uuid" /><input type="hidden" value="Drive_Master_developed_internally.dir/ReadLookAhead.dir/Generic_Aligned_NoComp.bts" name="tc_17_test" /><input type="hidden" value="Previous%20results%20for%20this%20test:%0a%0aRun%20by%20Yoyo%20Xu%20on%20Mar%2005%20%20%202:05AM%20CST:%20Result:%20fail,%20Staff%20Time:%202m" name="tc_17_note" /><input type="hidden" value="fail" name="tc_17_result" /><br />
+			<span class="fieldLabel">Actual Staff Time: </span><select onchange="changed(17,this);;restrict(this);" size="1" name="RUNDATA_exectimestaff_17" class="selection">
+<option selected="selected" value="2">2</option><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="60">60</option><option value="120">120</option></select>
+<br />
+			<span class="fieldLabel">Problem Report IDs: </span><input type="text" onchange="changed(17,this);" value="" name="RUNDATA_atm_prid_17" size="38" maxlength="255" /><br />
+			<span class="fieldLabel">Problem Report Links <span class="textareaStyle">(formatted)</span>: </span><div class="indent"><div><textarea onchange="changed(17,this);" name="RUNDATA_atm_prlink_17" cols="38" rows="5"></textarea></div></div><br />
+			<span class="fieldLabel">Execution Notes: </span><div><textarea rows="10" style="width:98%" onchange="changed(17,this);" wrap="soft" name="note_17"></textarea></div>Previous results for this test:
+<div class="indent">
+<p class="noteHeader">Run by Yoyo Xu on Mar 05   2:05AM CST: Result: <font color="#f84200">fail</font>, Staff Time: 2m</p></div> <span class="control">[<a href="javascript:uploadFile('Drive_Master_developed_internally.dir/ReadLookAhead.dir/Generic_Aligned_NoComp.bts','&amp;tid=17&amp;sessNum=002451/Nightly&amp;atm_id=2434A474-E9D9-11E2-B8EF-F43AC6C7364A');">Upload File</a>]</span> <span class="control">[<a onclick="resetRundata('17'); return false;" href="#">Reset Run Info</a>]</span>
+			</td>
+		</tr>
+
+		<tr class="header">
+			<th colspan="3" class="left right tleft">
+			<span class="fieldLabel">Test Case: </span><a href="/atm/browse/viewTestCase.mpl?suite=FCD&amp;atm_id=7C256EEC-E9DA-11E2-81BE-FE3BC6C7364A&amp;tid=18&amp;sessNum=002451" target="_blank" class="TYPE_tc_id">Drive_Master_developed_internally/ ReadLookAhead/ Generic_Aligned_Comp</a>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table class="TYPE_tc_table" style="width:98%">
+<tbody><tr class="header"><th colspan="5" class="left right">Test Process</th></tr>
+<tr class="header">
+<th class="left">#</th><th>Test Procedure</th>
+<th>Verification Procedure</th>
+<th width="1%">Result</th>
+<th class="right">Notes from each step</th>
+</tr>
+<tr>
+<td align="right"><b>1.</b></td><td><p><span style="font-family: helvetica; font-size: x-small;">Run TestLookAheadReliability.srt  on a drive specified by test session.<br />
+
+When Msgbox displays "Run test with aligned LBAs? (): No, *1: Yes), enter 1<br />
+
+When Msgbox displays "Run test with data compare? (*0: No, 1: Yes) enter 1</span></p>
+</td>
+<td><p>Script should pass without any error.</p>
+</td>
+<td class="center"><select onchange="updateResult(this,0)" name="results-0_18"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested</option><option value="pass">pass</option><option value="unsupported">unsupported</option><option value="blocked">blocked</option><option value="unresolved">unresolved</option><option value="fail">fail</option><option value="incomplete">incomplete</option></select></td><td><span class="rownote"><textarea size="40" multiple="multiple" onchange="changed(18,this);" wrap="soft" name="atm_step_notes-0_18"></textarea></span></td></tr>
+</tbody></table>
+ 
+			</td>
+			<td width="40%" valign="top">
+			<span class="fieldLabel">Result: </span><select onchange="changed(18,this);" name="results_18"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested - The feature was not tested</option><option value="pass">pass - The test passed</option><option value="unsupported">unsupported - Feature not supported</option><option value="blocked">blocked - Test case could not be started</option><option value="unresolved">unresolved - Result could not be determined</option><option value="fail">fail - The test failed</option><option value="incomplete">incomplete - The test has been started</option></select> <span class="control">[<a href="javascript:callBTS('tc_18');">Submit a Bug Report</a>]</span> <input type="hidden" value="7C256EEC-E9DA-11E2-81BE-FE3BC6C7364A" name="tc_18_uuid" /><input type="hidden" value="Drive_Master_developed_internally.dir/ReadLookAhead.dir/Generic_Aligned_Comp.bts" name="tc_18_test" /><input type="hidden" value="Previous%20results%20for%20this%20test:%0a%0aRun%20by%20Yoyo%20Xu%20on%20Mar%2005%20%20%202:05AM%20CST:%20Result:%20fail,%20Staff%20Time:%202m" name="tc_18_note" /><input type="hidden" value="fail" name="tc_18_result" /><br />
+			<span class="fieldLabel">Actual Staff Time: </span><select onchange="changed(18,this);;restrict(this);" size="1" name="RUNDATA_exectimestaff_18" class="selection">
+<option selected="selected" value="2">2</option><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="60">60</option><option value="120">120</option></select>
+<br />
+			<span class="fieldLabel">Problem Report IDs: </span><input type="text" onchange="changed(18,this);" value="" name="RUNDATA_atm_prid_18" size="38" maxlength="255" /><br />
+			<span class="fieldLabel">Problem Report Links <span class="textareaStyle">(formatted)</span>: </span><div class="indent"><div><textarea onchange="changed(18,this);" name="RUNDATA_atm_prlink_18" cols="38" rows="5"></textarea></div></div><br />
+			<span class="fieldLabel">Execution Notes: </span><div><textarea rows="10" style="width:98%" onchange="changed(18,this);" wrap="soft" name="note_18"></textarea></div>Previous results for this test:
+<div class="indent">
+<p class="noteHeader">Run by Yoyo Xu on Mar 05   2:05AM CST: Result: <font color="#f84200">fail</font>, Staff Time: 2m</p></div> <span class="control">[<a href="javascript:uploadFile('Drive_Master_developed_internally.dir/ReadLookAhead.dir/Generic_Aligned_Comp.bts','&amp;tid=18&amp;sessNum=002451/Nightly&amp;atm_id=7C256EEC-E9DA-11E2-81BE-FE3BC6C7364A');">Upload File</a>]</span> <span class="control">[<a onclick="resetRundata('18'); return false;" href="#">Reset Run Info</a>]</span>
+			</td>
+		</tr>
+
+		<tr class="header">
+			<th colspan="3" class="left right tleft">
+			<span class="fieldLabel">Test Case: </span><a href="/atm/browse/viewTestCase.mpl?suite=FCD&amp;atm_id=8AEC210A-E9DA-11E2-B742-0A3CC6C7364A&amp;tid=19&amp;sessNum=002451" target="_blank" class="TYPE_tc_id">Drive_Master_developed_internally/ ReadLookAhead/ Generic_unAligned_noComp</a>
+			</th>
+		</tr>
+		<tr>
+			<td valign="top">
+			<table class="TYPE_tc_table" style="width:98%">
+<tbody><tr class="header"><th colspan="5" class="left right">Test Process</th></tr>
+<tr class="header">
+<th class="left">#</th><th>Test Procedure</th>
+<th>Verification Procedure</th>
+<th width="1%">Result</th>
+<th class="right">Notes from each step</th>
+</tr>
+<tr>
+<td align="right"><b>1.</b></td><td><p><span style="font-family: helvetica; font-size: x-small;">Run TestLookAheadReliability.srt  on a drive specified by test session.<br />
+
+When Msgbox displays "Run test with aligned LBAs? (): No, *1: Yes), enter 0<br />
+
+When Msgbox displays "Run test with data compare? (*0: No, 1: Yes) enter 0</span></p>
+</td>
+<td><p>Script should pass without any error.</p>
+</td>
+<td class="center"><select onchange="updateResult(this,0)" name="results-0_19"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested</option><option value="pass">pass</option><option value="unsupported">unsupported</option><option value="blocked">blocked</option><option value="unresolved">unresolved</option><option value="fail">fail</option><option value="incomplete">incomplete</option></select></td><td><span class="rownote"><textarea size="40" multiple="multiple" onchange="changed(19,this);" wrap="soft" name="atm_step_notes-0_19"></textarea></span></td></tr>
+</tbody></table>
+ 
+			</td>
+			<td width="40%" valign="top">
+			<span class="fieldLabel">Result: </span><select onchange="changed(19,this);" name="results_19"><option selected="selected" value="">-- Select Result --</option><option value="untested">untested - The feature was not tested</option><option value="pass">pass - The test passed</option><option value="unsupported">unsupported - Feature not supported</option><option value="blocked">blocked - Test case could not be started</option><option value="unresolved">unresolved - Result could not be determined</option><option value="fail">fail - The test failed</option><option value="incomplete">incomplete - The test has been started</option></select> <span class="control">[<a href="javascript:callBTS('tc_19');">Submit a Bug Report</a>]</span> <input type="hidden" value="8AEC210A-E9DA-11E2-B742-0A3CC6C7364A" name="tc_19_uuid" /><input type="hidden" value="Drive_Master_developed_internally.dir/ReadLookAhead.dir/Generic_unAligned_noComp.bts" name="tc_19_test" /><input type="hidden" value="Previous%20results%20for%20this%20test:%0a%0aRun%20by%20Yoyo%20Xu%20on%20Mar%2005%20%20%202:05AM%20CST:%20Result:%20fail,%20Staff%20Time:%202m" name="tc_19_note" /><input type="hidden" value="fail" name="tc_19_result" /><br />
+			<span class="fieldLabel">Actual Staff Time: </span><select onchange="changed(19,this);;restrict(this);" size="1" name="RUNDATA_exectimestaff_19" class="selection">
+<option selected="selected" value="2">2</option><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="60">60</option><option value="120">120</option></select>
+<br />
+			<span class="fieldLabel">Problem Report IDs: </span><input type="text" onchange="changed(19,this);" value="" name="RUNDATA_atm_prid_19" size="38" maxlength="255" /><br />
+			<span class="fieldLabel">Problem Report Links <span class="textareaStyle">(formatted)</span>: </span><div class="indent"><div><textarea onchange="changed(19,this);" name="RUNDATA_atm_prlink_19" cols="38" rows="5"></textarea></div></div><br />
+			<span class="fieldLabel">Execution Notes: </span><div><textarea rows="10" style="width:98%" onchange="changed(19,this);" wrap="soft" name="note_19"></textarea></div>Previous results for this test:
+<div class="indent">
+<p class="noteHeader">Run by Yoyo Xu on Mar 05   2:05AM CST: Result: <font color="#f84200">fail</font>, Staff Time: 2m</p></div> <span class="control">[<a href="javascript:uploadFile('Drive_Master_developed_internally.dir/ReadLookAhead.dir/Generic_unAligned_noComp.bts','&amp;tid=19&amp;sessNum=002451/Nightly&amp;atm_id=8AEC210A-E9DA-11E2-B742-0A3CC6C7364A');">Upload File</a>]</span> <span class="control">[<a onclick="resetRundata('19'); return false;" href="#">Reset Run Info</a>]</span>
+			</td>
+		</tr>
+</tbody></table><div align="right"><font color="#ff0000">*</font> mandatory</div>
+<p>
+<input type="submit" value="Finish" name="Finish" class="bbutton" />
+<input type="submit" value="Save Changes" name="Save" class="bbutton" />
+<input type="reset" value="Reset" class="bbutton" />
+<input type="button" value="Cancel" onclick="window.close();" class="bbutton" />
+<input type="button" value="Reset all run info" onclick="resetAllRundata();" class="bbutton" /></p><p></p></form>
+
+<script src="/atm/scripts/tiny_mce3/tiny_mce.js" type="text/javascript" language="javascript"></script>
+<script type="text/javascript" language="javascript">
+&lt;!--
+	tinyMCE.init({
+        mode : "specific_textareas",
+        editor_selector: 'mce_editor',
+        entity_encoding: 'raw',
+        theme: "advanced",
+        browsers:  "msie,safari,gecko",
+        gecko_spellcheck: true ,
+        cleanup_callback: "",
+
+        apply_source_formatting: true,
+        inline_styles: false,
+        visual: true,
+        button_tile_map: true,
+        remove_linebreaks: false,
+        force_p_newlines: false,
+        force_br_newlines: true,
+//        content_css:  "http://ftcsvn.lsi.com/atm/atm.css",
+        theme_advanced_source_editor_width: 700,
+        theme_advanced_source_editor_height: 550,
+        theme_advanced_toolbar_location: "bottom",
+        theme_advanced_statusbar_location: "bottom",
+        theme_advanced_resizing : true,
+        theme_advanced_resizing_use_cookie: false,
+//        theme_advanced_toolbar_location: 'external',
+//        theme_advanced_toolbar_align: 'left',
+        use_native_selects: true,
+		plugins : "atmVars, iespell, paste, fullscreen",
+		theme_advanced_buttons2: "iespell,forecolor,backcolor,bold,italic,underline,strikethrough,sub,sup,separator,justifyleft,justifyright,justifycenter,justifyfull,separator,hr",
+		theme_advanced_buttons3: "bullist,numlist,separator,outdent,indent,separator,undo,redo,cleanup,removeformat,separator,link,unlink,separator,image,charmap,code,fullscreen",
+		theme_advanced_buttons1: "formatselect,fontselect,fontsizeselect",
+		theme_advanced_blockformats: "p,pre,h1,h2,h3,h4,h5,h6",
+        theme_advanced_path: false,
+valid_elements : ""
++"a[accesskey|charset|class|coords|dir&lt;ltr?rtl|href|hreflang|id|lang|name"
+  +"|onblur|onclick|ondblclick|onfocus|onkeydown|onkeypress|onkeyup"
+  +"|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|rel|rev"
+  +"|shape&lt;circle?default?poly?rect|style|tabindex|title|target|type],"
++"abbr[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress"
+  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style"
+  +"|title],"
++"acronym[class|dir&lt;ltr?rtl|id|id|lang|onclick|ondblclick|onkeydown|onkeypress"
+  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style"
+  +"|title],"
++"address[class|align|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown"
+  +"|onkeypress|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover"
+  +"|onmouseup|style|title],"
+//+"applet[align&lt;bottom?left?middle?right?top|alt|archive|class|code|codebase"
+//  +"|height|hspace|id|name|object|style|title|vspace|width],"
++"area[accesskey|alt|class|coords|dir&lt;ltr?rtl|href|id|lang|nohref&lt;nohref"
+  +"|onblur|onclick|ondblclick|onfocus|onkeydown|onkeypress|onkeyup"
+  +"|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup"
+  +"|shape&lt;circle?default?poly?rect|style|tabindex|title|target],"
+// +"base[href|target],"
++"basefont[color|face|id|size],"
++"bdo[class|dir&lt;ltr?rtl|id|lang|style|title],"
++"big[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress"
+  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style"
+  +"|title],"
++"blockquote[dir|style|cite|class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick"
+  +"|onkeydown|onkeypress|onkeyup|onmousedown|onmousemove|onmouseout"
+  +"|onmouseover|onmouseup|style|title],"
+//+"body[alink|background|bgcolor|class|dir&lt;ltr?rtl|id|lang|link|onclick"
+  +"|ondblclick|onkeydown|onkeypress|onkeyup|onload|onmousedown|onmousemove"
+  +"|onmouseout|onmouseover|onmouseup|onunload|style|title|text|vlink],"
++"br[class|clear&lt;all?left?none?right|id|style|title],"
++"button[accesskey|class|dir&lt;ltr?rtl|disabled&lt;disabled|id|lang|name|onblur"
+  +"|onclick|ondblclick|onfocus|onkeydown|onkeypress|onkeyup|onmousedown"
+  +"|onmousemove|onmouseout|onmouseover|onmouseup|style|tabindex|title|type"
+  +"|value],"
++"caption[align&lt;bottom?left?right?top|class|dir&lt;ltr?rtl|id|lang|onclick"
+  +"|ondblclick|onkeydown|onkeypress|onkeyup|onmousedown|onmousemove"
+  +"|onmouseout|onmouseover|onmouseup|style|title],"
++"center[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress"
+  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style"
+  +"|title],"
++"cite[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress"
+  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style"
+  +"|title],"
++"code[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress"
+  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style"
+  +"|title],"
++"col[align&lt;center?char?justify?left?right|char|charoff|class|dir&lt;ltr?rtl|id"
+  +"|lang|onclick|ondblclick|onkeydown|onkeypress|onkeyup|onmousedown"
+  +"|onmousemove|onmouseout|onmouseover|onmouseup|span|style|title"
+  +"|valign&lt;baseline?bottom?middle?top|width],"
++"colgroup[align&lt;center?char?justify?left?right|char|charoff|class|dir&lt;ltr?rtl"
+  +"|id|lang|onclick|ondblclick|onkeydown|onkeypress|onkeyup|onmousedown"
+  +"|onmousemove|onmouseout|onmouseover|onmouseup|span|style|title"
+  +"|valign&lt;baseline?bottom?middle?top|width],"
++"dd[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress|onkeyup"
+  +"|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style|title],"
++"del[cite|class|datetime|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown"
+  +"|onkeypress|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover"
+  +"|onmouseup|style|title],"
++"dfn[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress"
+  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style"
+  +"|title],"
++"dir[class|compact&lt;compact|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown"
+  +"|onkeypress|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover"
+  +"|onmouseup|style|title],"
++"div[align&lt;center?justify?left?right|class|dir&lt;ltr?rtl|id|lang|onclick"
+  +"|ondblclick|onkeydown|onkeypress|onkeyup|onmousedown|onmousemove"
+  +"|onmouseout|onmouseover|onmouseup|style|title],"
++"dl[class|compact&lt;compact|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown"
+  +"|onkeypress|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover"
+  +"|onmouseup|style|title],"
++"dt[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress|onkeyup"
+  +"|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style|title],"
++"em/i[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress"
+  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style"
+  +"|title],"
++"fieldset[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress"
+  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style"
+  +"|title],"
++"font[class|color|dir&lt;ltr?rtl|face|id|lang|size|style|title],"
+// +"form[accept|accept-charset|action|class|dir&lt;ltr?rtl|enctype|id|lang"
+//  +"|method&lt;get?post|name|onclick|ondblclick|onkeydown|onkeypress|onkeyup"
+//  +"|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|onreset|onsubmit"
+//  +"|style|title|target],"
+//+"frame[class|frameborder|id|longdesc|marginheight|marginwidth|name"
+//  +"|noresize&lt;noresize|scrolling&lt;auto?no?yes|src|style|title],"
+//+"frameset[class|cols|id|onload|onunload|rows|style|title],"
++"h1[align&lt;center?justify?left?right|class|dir&lt;ltr?rtl|id|lang|onclick"
+  +"|ondblclick|onkeydown|onkeypress|onkeyup|onmousedown|onmousemove"
+  +"|onmouseout|onmouseover|onmouseup|style|title],"
++"h2[align&lt;center?justify?left?right|class|dir&lt;ltr?rtl|id|lang|onclick"
+  +"|ondblclick|onkeydown|onkeypress|onkeyup|onmousedown|onmousemove"
+  +"|onmouseout|onmouseover|onmouseup|style|title],"
++"h3[align&lt;center?justify?left?right|class|dir&lt;ltr?rtl|id|lang|onclick"
+  +"|ondblclick|onkeydown|onkeypress|onkeyup|onmousedown|onmousemove"
+  +"|onmouseout|onmouseover|onmouseup|style|title],"
++"h4[align&lt;center?justify?left?right|class|dir&lt;ltr?rtl|id|lang|onclick"
+  +"|ondblclick|onkeydown|onkeypress|onkeyup|onmousedown|onmousemove"
+  +"|onmouseout|onmouseover|onmouseup|style|title],"
++"h5[align&lt;center?justify?left?right|class|dir&lt;ltr?rtl|id|lang|onclick"
+  +"|ondblclick|onkeydown|onkeypress|onkeyup|onmousedown|onmousemove"
+  +"|onmouseout|onmouseover|onmouseup|style|title],"
++"h6[align&lt;center?justify?left?right|class|dir&lt;ltr?rtl|id|lang|onclick"
+  +"|ondblclick|onkeydown|onkeypress|onkeyup|onmousedown|onmousemove"
+  +"|onmouseout|onmouseover|onmouseup|style|title],"
+// +"head[dir&lt;ltr?rtl|lang|profile],"
++"hr[align&lt;center?left?right|class|dir&lt;ltr?rtl|id|lang|noshade&lt;noshade|onclick"
+  +"|ondblclick|onkeydown|onkeypress|onkeyup|onmousedown|onmousemove"
+  +"|onmouseout|onmouseover|onmouseup|size|style|title|width],"
+// +"html[dir&lt;ltr?rtl|lang|version],"
+// +"iframe[align&lt;bottom?left?middle?right?top|class|frameborder|height|id"
+//   +"|longdesc|marginheight|marginwidth|name|scrolling&lt;auto?no?yes|src|style"
+//   +"|title|width],"
++"img[align&lt;bottom?left?middle?right?top|alt|border|class|dir&lt;ltr?rtl|height"
+  +"|hspace|id|ismap&lt;ismap|lang|longdesc|name|onclick|ondblclick|onkeydown"
+  +"|onkeypress|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover"
+  +"|onmouseup|src|style|title|usemap|vspace|width],"
++"input[accept|accesskey|align&lt;bottom?left?middle?right?top|alt"
+  +"|checked&lt;checked|class|dir&lt;ltr?rtl|disabled&lt;disabled|id|ismap&lt;ismap|lang"
+  +"|maxlength|name|onblur|onclick|ondblclick|onfocus|onkeydown|onkeypress"
+  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|onselect"
+  +"|readonly&lt;readonly|size|src|style|tabindex|title"
+  +"|type&lt;button?checkbox?file?hidden?image?password?radio?reset?submit?text"
+  +"|usemap|value],"
++"ins[cite|class|datetime|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown"
+  +"|onkeypress|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover"
+  +"|onmouseup|style|title],"
+// +"isindex[class|dir&lt;ltr?rtl|id|lang|prompt|style|title],"
++"kbd[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress"
+  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style"
+  +"|title],"
++"label[accesskey|class|dir&lt;ltr?rtl|for|id|lang|onblur|onclick|ondblclick"
+  +"|onfocus|onkeydown|onkeypress|onkeyup|onmousedown|onmousemove|onmouseout"
+  +"|onmouseover|onmouseup|style|title],"
++"legend[align&lt;bottom?left?right?top|accesskey|class|dir&lt;ltr?rtl|id|lang"
+  +"|onclick|ondblclick|onkeydown|onkeypress|onkeyup|onmousedown|onmousemove"
+  +"|onmouseout|onmouseover|onmouseup|style|title],"
++"li[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress|onkeyup"
+  +"|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style|title|type],"
++"link[charset|class|dir&lt;ltr?rtl|href|hreflang|id|lang|media|onclick"
+  +"|ondblclick|onkeydown|onkeypress|onkeyup|onmousedown|onmousemove"
+  +"|onmouseout|onmouseover|onmouseup|rel|rev|style|title|target|type],"
++"map[class|dir&lt;ltr?rtl|id|lang|name|onclick|ondblclick|onkeydown|onkeypress"
+  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style"
+  +"|title],"
++"menu[class|compact&lt;compact|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown"
+  +"|onkeypress|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover"
+  +"|onmouseup|style|title],"
++"meta[content|dir&lt;ltr?rtl|http-equiv|lang|name|scheme],"
+//+"noframes[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress"
+//  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style"
+//  +"|title],"
+//+"noscript[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress"
+//  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style"
+//  +"|title],"
++"object[align&lt;bottom?left?middle?right?top|archive|border|class|classid"
+  +"|codebase|codetype|data|declare|dir&lt;ltr?rtl|height|hspace|id|lang|name"
+  +"|onclick|ondblclick|onkeydown|onkeypress|onkeyup|onmousedown|onmousemove"
+  +"|onmouseout|onmouseover|onmouseup|standby|style|tabindex|title|type|usemap"
+  +"|vspace|width],"
++"ol[class|compact&lt;compact|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown"
+  +"|onkeypress|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover"
+  +"|onmouseup|start|style|title|type],"
++"optgroup[class|dir&lt;ltr?rtl|disabled&lt;disabled|id|label|lang|onclick"
+  +"|ondblclick|onkeydown|onkeypress|onkeyup|onmousedown|onmousemove"
+  +"|onmouseout|onmouseover|onmouseup|style|title],"
++"option[class|dir&lt;ltr?rtl|disabled&lt;disabled|id|label|lang|onclick|ondblclick"
+  +"|onkeydown|onkeypress|onkeyup|onmousedown|onmousemove|onmouseout"
+  +"|onmouseover|onmouseup|selected&lt;selected|style|title|value],"
++"p[align&lt;center?justify?left?right|class|dir&lt;ltr?rtl|id|lang|onclick"
+  +"|ondblclick|onkeydown|onkeypress|onkeyup|onmousedown|onmousemove"
+  +"|onmouseout|onmouseover|onmouseup|style|title],"
++"param[id|name|type|value|valuetype&lt;DATA?OBJECT?REF],"
++"pre/listing/plaintext/xmp[align|class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick"
+  +"|onkeydown|onkeypress|onkeyup|onmousedown|onmousemove|onmouseout"
+  +"|onmouseover|onmouseup|style|title|width],"
++"q[cite|class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress"
+  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style"
+  +"|title],"
++"s[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress|onkeyup"
+  +"|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style|title],"
++"samp[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress"
+  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style"
+  +"|title],"
++"script[charset|defer|language|src|type],"
++"select[class|dir&lt;ltr?rtl|disabled&lt;disabled|id|lang|multiple&lt;multiple|name"
+  +"|onblur|onclick|ondblclick|onfocus|onkeydown|onkeypress|onkeyup"
+  +"|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|size|style"
+  +"|tabindex|title],"
++"small[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress"
+  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style"
+  +"|title],"
++"span[align|class|class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown"
+  +"|onkeypress|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover"
+  +"|onmouseup|style|title],"
++"strike[class|class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown"
+  +"|onkeypress|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover"
+  +"|onmouseup|style|title],"
++"strong/b[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress"
+  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style"
+  +"|title],"
++"style[dir&lt;ltr?rtl|lang|media|title|type],"
++"sub[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress"
+  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style"
+  +"|title],"
++"sup[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress"
+  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style"
+  +"|title],"
++"table[align&lt;center?left?right|bgcolor|border|cellpadding|cellspacing|class"
+  +"|dir&lt;ltr?rtl|frame|height|id|lang|onclick|ondblclick|onkeydown|onkeypress"
+  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|rules"
+  +"|style|summary|title|width],"
++"tbody[align&lt;center?char?justify?left?right|char|class|charoff|dir&lt;ltr?rtl|id"
+  +"|lang|onclick|ondblclick|onkeydown|onkeypress|onkeyup|onmousedown"
+  +"|onmousemove|onmouseout|onmouseover|onmouseup|style|title"
+  +"|valign&lt;baseline?bottom?middle?top],"
++"td[abbr|align&lt;center?char?justify?left?right|axis|bgcolor|char|charoff|class"
+  +"|colspan|dir&lt;ltr?rtl|headers|height|id|lang|nowrap&lt;nowrap|onclick"
+  +"|ondblclick|onkeydown|onkeypress|onkeyup|onmousedown|onmousemove"
+  +"|onmouseout|onmouseover|onmouseup|rowspan|scope&lt;col?colgroup?row?rowgroup"
+  +"|style|title|valign&lt;baseline?bottom?middle?top|width],"
++"textarea[accesskey|class|cols|dir&lt;ltr?rtl|disabled&lt;disabled|id|lang|name"
+  +"|onblur|onclick|ondblclick|onfocus|onkeydown|onkeypress|onkeyup"
+  +"|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|onselect"
+  +"|readonly&lt;readonly|rows|style|tabindex|title],"
++"tfoot[align&lt;center?char?justify?left?right|char|charoff|class|dir&lt;ltr?rtl|id"
+  +"|lang|onclick|ondblclick|onkeydown|onkeypress|onkeyup|onmousedown"
+  +"|onmousemove|onmouseout|onmouseover|onmouseup|style|title"
+  +"|valign&lt;baseline?bottom?middle?top],"
++"th[abbr|align&lt;center?char?justify?left?right|axis|bgcolor|char|charoff|class"
+  +"|colspan|dir&lt;ltr?rtl|headers|height|id|lang|nowrap&lt;nowrap|onclick"
+  +"|ondblclick|onkeydown|onkeypress|onkeyup|onmousedown|onmousemove"
+  +"|onmouseout|onmouseover|onmouseup|rowspan|scope&lt;col?colgroup?row?rowgroup"
+  +"|style|title|valign&lt;baseline?bottom?middle?top|width],"
++"thead[align&lt;center?char?justify?left?right|char|charoff|class|dir&lt;ltr?rtl|id"
+  +"|lang|onclick|ondblclick|onkeydown|onkeypress|onkeyup|onmousedown"
+  +"|onmousemove|onmouseout|onmouseover|onmouseup|style|title"
+  +"|valign&lt;baseline?bottom?middle?top],"
++"title[dir&lt;ltr?rtl|lang],"
++"tr[abbr|align&lt;center?char?justify?left?right|bgcolor|char|charoff|class"
+  +"|rowspan|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress"
+  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style"
+  +"|title|valign&lt;baseline?bottom?middle?top],"
++"tt[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress|onkeyup"
+  +"|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style|title],"
++"u[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress|onkeyup"
+  +"|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style|title],"
++"ul[class|compact&lt;compact|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown"
+  +"|onkeypress|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover"
+  +"|onmouseup|style|title|type],"
++"var[class|dir&lt;ltr?rtl|id|lang|onclick|ondblclick|onkeydown|onkeypress"
+  +"|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover|onmouseup|style"
+  +"|title]",
+
+        auto_cleanup_word:  true,
+        
+        relative_urls: false
+	});
+
+// --&gt;
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="display: none" id="oneEmHigh">H</div>
+
+
+</div> <!-- end of contentArea -->
+</div> <!-- end of atmBody -->
+
+</body></html>
